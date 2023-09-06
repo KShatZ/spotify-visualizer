@@ -22,7 +22,7 @@ loginForm.addEventListener("submit", async(event) => {
 
     switch (response.status) {
         case 200:
-            window.location.href = "/blocked";
+            window.location.href = "/";
             break;
         case 401:
             window.location.href = "/spotify/auth";
