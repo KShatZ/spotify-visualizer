@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | Spotify Visualizer</title>
+</head>
+<body>
+    
+    <h1>Register:</h1>
+
+    <form id="registerForm" action="/register" method="POST">
+        <label for="username">Username:</label>
+        <input id="username" type="text" name="username" required>
+
+        <label for="password">Password:</label>
+        <input id="username" type="password" name="password" required>
+
+        <button type="submit">Create Account</button>
+    </form>
+
+    <script src="{{url_for('static', filename='js/auth/register.js')}}"></script>
+</body>
+</html>
