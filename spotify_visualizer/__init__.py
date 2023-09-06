@@ -1,4 +1,8 @@
 from flask import Flask
+from flask_login import LoginManager
+
+
+login_manager = LoginManager()
 
 
 def init_app():
@@ -8,18 +12,25 @@ def init_app():
     :rtype: Flask App Instance
     """
 
-    app = Flask("__name__")
+    app = Flask("__name__", static_folder="spotify_visualizer/static")
+
+    login_manager.init_app(app)
 
     with app.app_context():
 
-        # App Configuration & Imports
-        from .spotify import SpotifyBlueprint
+        # ------ Config ------ #
+        app.config["SECRET_KEY"] = "someSecretKey" # TODO: Proper
 
+        # ------ Blueprints ------ #
+        from .blueprints.index import IndexBlueprint
+        app.register_blueprint(IndexBlueprint)
+        from .blueprints.auth import AuthenticationBlueprint
+        app.register_blueprint(AuthenticationBlueprint)
+        from .blueprints.spotify import SpotifyBlueprint
         app.register_blueprint(SpotifyBlueprint)
-
-        # Importing Dash application
+        
+        # ------ Dash ------ #
         from .dash import create_dash_app
         app = create_dash_app(app)
-
 
         return app
