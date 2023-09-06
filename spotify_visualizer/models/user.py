@@ -1,12 +1,9 @@
 import os
 
 from bson import ObjectId
-
 from dotenv import load_dotenv
 load_dotenv()
-
 from flask_login import UserMixin
-
 from pymongo import MongoClient
 
 
