@@ -32,11 +32,11 @@ def load_user(user_id):
     return User(user_doc)
 
 
-@AuthenticationBlueprint.post("/logout")
+@AuthenticationBlueprint.get("/logout")
 @login_required
 def logout():
     logout_user()
-    redirect("/login")
+    return redirect("/login")
 
     
 @AuthenticationBlueprint.get("/register")
