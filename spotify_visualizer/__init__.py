@@ -28,6 +28,8 @@ def init_app():
         app.register_blueprint(AuthenticationBlueprint)
         from .blueprints.spotify import SpotifyBlueprint
         app.register_blueprint(SpotifyBlueprint)
+        from .blueprints.dashboard import DashboardBlueprint
+        app.register_blueprint(DashboardBlueprint)
         
         # ------ Dash ------ #
         from .dash import create_dash_app
