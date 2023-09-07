@@ -31,6 +31,15 @@ def load_user(user_id):
     
     return User(user_doc)
 
+@login_manager.unauthorized_handler
+def unauthorized():
+    """This handler is called when someone tries to access a path where
+    being logged in is required. Therefore, redirects user to the login
+    screen.
+    """
+    
+    return redirect("/login")
+
 
 @AuthenticationBlueprint.get("/logout")
 @login_required
@@ -52,7 +61,7 @@ def post_register():
 
     # TODO: Sanitize values, before sending to DB
 
-    if (user_exists(user["username"])):
+    if (user_exists(username=user["username"])):
         return "someStatusCode: Username exists" #TODO
 
     user["spotify"] = None
