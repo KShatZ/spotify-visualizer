@@ -3,7 +3,7 @@ from flask import current_app
 from pymongo import MongoClient
 import requests
 
-from spotify_visualizer.blueprints.spotify.helpers.spotify import get_access_token, refresh_access_token
+from spotify_visualizer.blueprints.spotify.helpers.user import get_access_token, refresh_access_token
 
 mongo = MongoClient()
 USERS_COLLECTION =  mongo["spotify-visualizer"]["users"]
