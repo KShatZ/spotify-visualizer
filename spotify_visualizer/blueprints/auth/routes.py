@@ -1,4 +1,4 @@
-from flask import request, render_template, url_for, redirect
+from flask import request, render_template, url_for, redirect, current_app
 from flask_login import login_user, login_required, logout_user, current_user
 
 from pymongo import MongoClient
@@ -39,6 +39,27 @@ def unauthorized():
     """
     
     return redirect("/login")
+
+
+@current_app.before_request
+def secure_dash_pages():
+    """Middleware function that requires user to be logged in
+    to access the /visualizer/* path. If the path contains the 
+    "/visualizer/" root, then ensures that the user is logged in.
+
+    :return: If dash endpoint and user is not logged in will return
+    a redirect. Otherwise nothing is returned and next middleware runs
+    :rtype: Response or None
+    """
+    
+    path = request.path
+
+    if len(path) >= 12:
+        
+        root = path[0:12]
+        if root == "/visualizer/" and current_user.is_authenticated == False:
+
+            return redirect("/login")
 
 
 @AuthenticationBlueprint.get("/logout")
@@ -82,7 +103,7 @@ def post_register():
 def render_login_page():
 
     if current_user.is_authenticated:
-        redirect("/")
+        return redirect("/")
         
     return render_template("login.html")
 
