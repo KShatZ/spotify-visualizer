@@ -61,8 +61,8 @@ def refresh_access_token(user_id):
 
     :param user_id: The _id of the user to refresh token for
     :type user_id: str
-    :return: Whether or not token was refreshed
-    :rtype: bool
+    :return: Refreshed Access Token or None
+    :rtype: str
     """ 
 
     spotify_doc = USERS_COLLECTION.find_one({"_id": ObjectId(user_id)}, {"spotify": 1, "_id": 0})
@@ -70,6 +70,7 @@ def refresh_access_token(user_id):
     if not spotify_doc: 
         # TODO: Handle this, either user does not exist or spotify object not set up (need to auth)
         # But this should basically never happen
+        print("No spotify doc for user refresh")
         return None
     
     # TODO: Globals???
@@ -84,10 +85,12 @@ def refresh_access_token(user_id):
 
     r = requests.post(endpoint, headers=headers, params=body)
     response_data = r.json()
+
+    access_token = response_data["access_token"]
     
-    update_result = USERS_COLLECTION.update_one({"_id": ObjectId(user_id)}, {"$set": {"spotify.access": response_data["access_token"]}})
+    update_result = USERS_COLLECTION.update_one({"_id": ObjectId(user_id)}, {"$set": {"spotify.access": access_token}})
     if update_result.modified_count == 0:
         # Document wasnt modified for some reason -- handle TODO
-        return False
+        return None
 
-    return True
+    return access_token
