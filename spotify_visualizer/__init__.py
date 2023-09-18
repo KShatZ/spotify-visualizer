@@ -14,9 +14,9 @@ def init_app():
 
     app = Flask("__name__", static_folder="spotify_visualizer/static")
 
-    login_manager.init_app(app)
-
     with app.app_context():
+
+        login_manager.init_app(app)
 
         # ------ Config ------ #
         app.config["SECRET_KEY"] = "someSecretKey" # TODO: Proper
