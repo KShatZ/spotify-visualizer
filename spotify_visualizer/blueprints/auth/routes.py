@@ -62,13 +62,9 @@ def secure_dash_pages():
             return redirect("/login")
 
 
-@AuthenticationBlueprint.get("/logout")
-@login_required
-def logout():
-    logout_user()
-    return redirect("/login")
-
-    
+# ----------------------- #
+# ------ /register ------ #    
+# ----------------------- #
 @AuthenticationBlueprint.get("/register")
 def render_register_page():
 
@@ -99,6 +95,9 @@ def post_register():
     }, 201
 
 
+# -------------------- #
+# ------ /login ------ #
+# -------------------- #
 @AuthenticationBlueprint.get("/login")
 def render_login_page():
 
@@ -147,3 +146,13 @@ def login():
     except:
         #TODO: Better error handling
         return "someStatusCode Issues logging in"
+
+
+# --------------------- #
+# ------ /logout ------ #
+# --------------------- #
+@AuthenticationBlueprint.get("/logout")
+@login_required
+def logout():
+    logout_user()
+    return redirect("/login")
