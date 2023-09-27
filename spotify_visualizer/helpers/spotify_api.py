@@ -73,7 +73,19 @@ class SpotifyRequest():
             print(f"Params: {self.params}")
             print(f"Headers: {self.headers}")
 
-        r = requests.request(self.method, self.url, params=self.params, headers=self.headers)
+        try:
+            if self.debug:
+                print(f"Sending {self.method} request to {self.url} for user {self.user_id}")
+                print(f"Params: {self.params}")
+                print(f"Headers: {self.headers}")
+            
+            r = requests.request(self.method, self.url, params=self.params, headers=self.headers)
+
+            if self.debug:
+                print("Response Status Code:", r.status_code)
+                
+        except Exception as e: # TODO: Better Handling
+            print(f"SpotifyRequest: Issue sending request to API \n The error: {e}")
         
         if r.status_code == Status.UNAUTHORIZED:
             print(f"401: Request to {self.url} for user {self.user_id}")
