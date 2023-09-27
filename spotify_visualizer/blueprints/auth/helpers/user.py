@@ -45,6 +45,7 @@ def get_user(user_id="", username=None):
     
     return USERS_COLLECTION.find_one({"_id": ObjectId(user_id)}, {"hash": 0})
 
+
 def user_exists(user_id="", username=None):
     """Helper function used to see if a user exists with the provided _id or username.
 

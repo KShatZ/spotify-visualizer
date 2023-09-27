@@ -3,7 +3,6 @@ from spotify_visualizer.blueprints.index import IndexBlueprint
 from flask import render_template, redirect
 from flask_login import current_user
 
-from pymongo import MongoClient
 
 
 @IndexBlueprint.get("/")
