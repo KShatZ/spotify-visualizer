@@ -20,7 +20,7 @@ def spotify_auth():
         "client_id": os.getenv("SPOTIFY_CLIENT_ID"), 
         "response_type": "code",
         "redirect_uri": os.getenv("SPOTIFY_REDIRECT_URI"),
-        "scope":"user-library-read user-read-private",
+        "scope":"user-library-read user-read-private playlist-read-private user-follow-read",
     }
 
     endpoint = "https://accounts.spotify.com/authorize?" + urlencode(auth_code_params)
