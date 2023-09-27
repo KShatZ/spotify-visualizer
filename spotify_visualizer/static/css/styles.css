@@ -1,0 +1,120 @@
+/* ------ Globals ------ */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    row-gap: 15px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    scroll-behavior: smooth;
+}
+
+a {
+    text-decoration: none;
+    color:#000000;
+} a:visited {
+    text-decoration: none;
+    color: #000000;
+}
+
+.container {
+    margin: 0 auto;
+    padding: 0 15px;
+    width: 100%;
+    max-width: 1024px;
+    /* border: 1px blue solid; */
+}
+
+
+/* Navigation */
+nav {
+    border: 1px red solid;
+    height: 50px;
+    width: 100%;
+    /* margin-bottom: -15px; */
+}
+
+.nav-container {
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    height: 100%;
+}
+
+/* Dashboard */
+.spotify-asset img{
+    width: 75px;
+    height: auto;
+}
+
+.user-section {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.user-section_header {
+    align-items: flex-start;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+    width: 100%;
+}
+
+.user-section_spotify-logo {
+    height: auto;
+    width: 150px;
+}
+
+#profile-picture {
+    height: auto;
+    width: 150px;
+}
+
+.user-section_user-stats {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+    width: 100%;
+
+} 
+
+.user-section_user-stats li {
+    list-style: none;
+    margin-bottom: 10px;
+}
+
+.playlists {
+    display: flex;
+    flex-direction: column;
+    row-gap: 35px;
+}
+
+.playlist {
+    display: flex;
+}
+
+.playlist_album-art {
+    height: 75px;
+    width: 75px;
+    border: 1px solid black;
+}
+
+.playlist_meta {
+    margin-left: 25px;
+} 
+
+.playlist_meta h2 {
+    padding-bottom: 3px;
+}
+
+.playlist_meta p {
+    padding-bottom: 2px;
+}

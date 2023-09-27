@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify Visualizer | {{playlist["meta"].get("name")}} </title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+</head>
+<body>
+    
+    {% include "_header.html" %}
+
+    <div class="playlist-header container">
+        <div class="playlist-image-placeholder"></div>
+        <h1>{{playlist["meta"].get("name")}}</h1>
+
+        <p>Tracks: {{playlist.total_tracks}}</p>
+        <p>Followers: {{playlist.meta.get("followers", "N/A")}}</p>
+        <p>Updated At: {{playlist.meta.get("updated_at", "N/A")}}</p>
+
+        <button id="update-playlist-btn">Update Playlist</button>
+    </div>
+
+    <button>Visualizer</button>
+     
+    <hr>
+
+    <div class="playlist-songs containter">
+
+        {% for track in playlist.tracks %}
+            <div class="playlist">
+                <div class="playlist_meta">
+                    <h2>{{track.name}}</h2>
+                    <p>{{track.artists[0].get("name")}}</p> <!-- TODO: Show all artists on the track -->
+                    <p>{{track.bpm}} - {{track.camelot_notation}}</p>
+                </div>
+            </div>
+        {% endfor %}
+
+    </div>
+
+<script src="{{url_for('static', filename='js/playlist/updateButton.js')}}"></script>
+</body>
+</html>

@@ -12,7 +12,7 @@ def init_app():
     :rtype: Flask App Instance
     """
 
-    app = Flask("__name__", static_folder="spotify_visualizer/static")
+    app = Flask("__name__", template_folder="spotify_visualizer/templates", static_folder="spotify_visualizer/static")
 
     with app.app_context():
 
@@ -30,6 +30,8 @@ def init_app():
         app.register_blueprint(SpotifyBlueprint)
         from .blueprints.dashboard import DashboardBlueprint
         app.register_blueprint(DashboardBlueprint)
+        from .blueprints.playlist import PlaylistBlueprint
+        app.register_blueprint(PlaylistBlueprint)
         
         # ------ Dash ------ #
         from .dash import create_dash_app
