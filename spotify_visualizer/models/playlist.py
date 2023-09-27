@@ -1,12 +1,11 @@
 import datetime
-import time
 
 from flask_login import current_user
 from pymongo import MongoClient
-import requests
 
 from spotify_visualizer.blueprints.spotify.helpers.user import get_access_token, refresh_access_token
 from spotify_visualizer.helpers.spotify_api import SpotifyRequest
+from spotify_visualizer.models.track import Track
 
 
 class Playlist():
@@ -40,24 +39,32 @@ class Playlist():
         self.debug = debug
 
         mongo = MongoClient()
-        self.PLAYLIST_COLLECTION = mongo[str(self.user_id)][str(self.id)]
 
+        # Liked Songs
         if not self.id:
-            self.name = "Liked Songs"
             self.PLAYLIST_COLLECTION = mongo[str(self.user_id)]["liked_songs"]
+            self.meta = self.PLAYLIST_COLLECTION.find_one({"_id": "meta"})
             
-    
-        self.tracks = list(self.PLAYLIST_COLLECTION.find({"_id": {"$ne": "meta"}})) 
-        self.total_tracks = len(self.tracks)
-
+        # Playlist
+        if self.id:            
+            self.PLAYLIST_COLLECTION = mongo[str(self.user_id)][str(self.id)]
+            self.meta = self.PLAYLIST_COLLECTION.find_one({"_id": "meta"})
+            
+        if self.meta:
+            self.name = self.meta.get("name")
+        
+        self.track_docs = list(self.PLAYLIST_COLLECTION.find({"_id": {"$ne": "meta"}})) 
+        self.total_tracks = len(self.track_docs)
+        
         if self.total_tracks == 0:
-            self.tracks = []
+            self.track_docs = []
 
+        self.tracks = [Track(track, debug=True) for track in self.track_docs]
         if source == "spotify":
-            self.update_playlist_songs()
+            self.update_playlist_tracks()
 
     
-    def update_playlist_songs(self, type="update"):
+    def update_playlist_tracks(self, type="update"):
         """Entry point into updating the playlist.
 
         :param type: Whether to use batch mode or not, defaults to "update"
@@ -71,19 +78,96 @@ class Playlist():
         if self.id: # Not liked songs
             playlist = self._playlist_meta()
 
-
         if self.debug:
             print(f"Playlist Update Type: {type}")
 
         self._modify_playlist(playlist=playlist, type=type)
+        
+        self.tracks = [Track(track, debug=True) for track in self.track_docs]
 
+    
+    def update_needed(self, recent_track_count):
+        """Checks whether or not the playlist needs
+        to be updated.
+
+        :param recent_track_count: The most recent count of
+        tracks in the playlist
+        :type recent_track_count: int
+        :return: Whether or not the playlist needs to be updated
+        :rtype: bool
+        """
+
+        # Playlist not in mongo - need to update to add
+        if self.total_tracks == 0 and recent_track_count != 0:
+            return True
+        
+        if self.total_tracks != recent_track_count:
+            return True
+        
+        return False
+    
 
     def delete_playlist():
         pass
 
 
-    def get_analytics():
-        pass
+    def __get_audio_features(self, tracks):
+        """Sends a request to Spotify API for each provided 
+        track to get their basic audio features. The response
+        is added to the track doc under the key 'audio features'.
+
+        This function utilizes the batch endpoint and sends multiple
+        track id's in one request. If the audio features are needed for
+        multiple tracks, this function is recommended over the single
+        track version.
+
+        :param tracks: A list of track docs. Can not contain more than 100
+        as that is the max for the spotify endpoint.
+        :type tracks: list of dics
+        :return: The list of track docs, which have been modified
+        with a new key 'audio_features'
+        :rtype: list of dics
+        """
+        
+        total_tracks = len(tracks)
+
+        if total_tracks > 100: # TODO: Better Handling
+            print("Get Audio Features: Can only get audio features for 100 tracks max...")
+            return tracks 
+
+        track_ids = ""
+        for track in tracks:
+            id = track["track"].get("id", None)
+
+            if id:
+                id = str(id) + ","
+                track_ids += id
+
+        params = {"ids": track_ids}
+
+        r = SpotifyRequest("get", "https://api.spotify.com/v1/audio-features", params=params, debug=True)
+        data = r.send().json()
+
+        audio_features = data.get("audio_features")
+        
+        # TODO: Better error handling
+        if total_tracks != len(audio_features):
+            print("Track Audio Feature: Issue getting all tracks")
+            return tracks
+        
+        for index, track_features in enumerate(audio_features):
+
+            track_id = track_features.get("id")
+
+            track = tracks[index]
+
+            if track_id == track["track"].get("id"):
+                track["audio_features"] = track_features
+            else:
+                # TODO: Better Handling in case order is not the same ever
+                print("Wrong ID")
+
+        return tracks
 
 
     def _liked_songs_meta(self, total_tracks):
@@ -166,7 +250,7 @@ class Playlist():
         :type current_tracks: list of dicts
         """
 
-        original_track_ids = self._get_song_id_set(self.tracks)
+        original_track_ids = self._get_song_id_set(self.track_docs)
         most_recent_track_ids = self._get_song_id_set(current_tracks)
 
         add_tracks = []
@@ -215,7 +299,7 @@ class Playlist():
             neccesary tracks.
 
             - True: A "fresh start". Will push to the playlists mongo collection
-            in batches of 100. This is a straight add with no deduping, hence used
+            in batches of 50. This is a straight add with no deduping, hence used
             in cases when the collection is empty for front-end user experience,
             purposes.
 
@@ -243,9 +327,9 @@ class Playlist():
             if not url:
                 done = True
 
-            tracks = playlist["tracks"].get("items")
+            tracks = self.__get_audio_features(playlist["tracks"].get("items"))
             if batch:
-                self.tracks += tracks
+                self.track_docs += tracks
                 self.PLAYLIST_COLLECTION.insert_many(tracks)
             else:
                 current_tracks += tracks
@@ -264,17 +348,17 @@ class Playlist():
             if not url:
                 done = True
 
+            tracks = self.__get_audio_features(data.get("items"))
             if batch:
-                current_tracks = data.get("items")
-                self.tracks += current_tracks
+                current_tracks = tracks
+                self.track_docs += current_tracks
                 self.PLAYLIST_COLLECTION.insert_many(current_tracks)
             else:
-                current_tracks += data.get("items")
+                current_tracks += tracks
 
         if not batch:
             self._update_mongo_playlist(current_tracks)
-            self.tracks = current_tracks
+            self.track_docs = current_tracks
 
         self.PLAYLIST_COLLECTION.update_one({"_id": "meta"}, {"$set": self.meta}, upsert=True)
-        self.total_tracks = len(self.tracks)
-     
+        self.total_tracks = len(self.track_docs)
