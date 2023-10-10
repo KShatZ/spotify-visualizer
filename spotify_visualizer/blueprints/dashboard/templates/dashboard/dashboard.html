@@ -3,59 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spotify Visualizer Dashboard</title>
+    <title>Dashboard | Spotify Visualizer</title>
     <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
 </head>
+
 <body>
-    
     {% include "_header.html" %}
 
-    <div class="user-section container">
-        <div class="user-section_header">
-            <img class="user-section_spotify-logo" src="{{url_for('static', filename='img/spotify_assets/logo/Spotify_Logo_RGB_Green.png')}}" alt="Spotify Logo">
-            <img id="profile-picture" src={{t.profile_img}} alt="Spotify Profile Picture">
+    <div class="spotify-profile-header container">
+        <div class="mobile-meta-arrow-container">
+            <img id="meta-arrow-left" class="meta-arrow meta-arrow-off"
+            src="{{url_for('static', filename='svg/playlist-meta-left.svg')}}" alt="">
         </div>
-        
-        <a href="{{t.profile_url}}">{{t.display_name}}</a>
 
-        <div class="user-section_user-stats">
-            <ul>
-                <li>Liked Songs: {{t.total_tracks}}</li>
-                <li>Playlists: {{t.playlist_count}}</li>
-            </ul>               
-            <ul>
-                <li>Followers: {{t.followers}}</li>
-                <li>Following: {{t.following}}</li>
-            </ul>
+        <div class="header-meta-container">
+            <div id="meta-image">
+                <img id="spotify-profile-picture" src={{t.profile_img}} alt="Spotify Profile Picture">
+            </div>
+            <div id="header-meta" style="display: none;">
+                <ul>
+                    <li>Followers: {{t.followers}}</li>
+                    <li>Following: {{t.following}}</li>
+                </ul>
+                <ul>
+                    <li>Total Playlists: {{ t.playlist_count }}</li>
+                </ul>
+
+                <a id="profile-url" href="{{ t.profile_url }}" target="_blank">Open Spotify Profile</a>
+            </div>
+        </div>
+
+        <div class="mobile-meta-arrow-container">
+            <img id="meta-arrow-right" class="meta-arrow"
+            src="{{url_for('static', filename='svg/playlist-meta-right.svg')}}" alt="">
         </div>
     </div>
 
-    <div class="playlists container">
-        <h1>Your Playlists:</h1>
+    <h1 id="users-display-name">{{ t.display_name }}</h1>
+   
+    <!-- Rework This -->
+    <div class="container">
+        <div class="track-labels">
+            <h2 id="tracks-header">Your Playlists:</h2>
+                <div class="playlist-tracks-labels_analysis">
 
+                </div>
+        </div>
+        <div class="tracks-filter-container">
+            <hr>
+            <span id="toggle-tracks-filter">&#9660;</span>
+        </div>
+    </div>
+   
+    <div class="playlists container">
         <a class="playlist" href="/playlist/liked-songs">
             <div class="playlist_album-art">
-
+                <img id="default-playlist-img" src="{{ url_for('static', filename='img/spotify_assets/icon/Spotify_Icon_RGB_Green.png') }}" alt="Liked Songs cover art.">
             </div>
 
             <div class="playlist_meta">
                 <h2>Liked Songs</h2>
                 <p>Tracks: {{t.total_tracks}}</p>
             </div>
+
+            <div class="playlist-caret">
+                <img class="playlist-caret-svg" src="{{url_for('static', filename='svg/right.svg')}}" alt="">
+            </div>
         </a>
 
         {% for playlist in t.playlists %}
             <a class="playlist" href="/playlist/{{playlist.id}}">
                 <div class="playlist_album-art">
-                    
+                    {% if playlist.image %}
+                        <img id="playlist-image" src="{{playlist['image'].get('url')}}" alt="Cover art for '{{playlist.get('name')}}' playlist." loading="lazy">
+                    {% else %}
+                        <img id="default-playlist-img" src="{{url_for('static', filename='img/spotify_assets/icon/Spotify_Icon_RGB_Green.png')}}" alt="Default cover art for '{{playlist.get('name')}}' playlist." loading="lazy">
+                    {% endif %}
                 </div>
 
                 <div class="playlist_meta">
                     <h2>{{playlist.get("name")}}</h2>
                     <p>Tracks: {{playlist.get("track_count")}}</p>
                 </div>
+
+                <div class="playlist-caret">
+                    <img class="playlist-caret-svg" src="{{url_for('static', filename='svg/right.svg')}}" alt="">
+                </div>
             </a>
         {% endfor %}
-
     </div>
+
+    <script src="{{ url_for('static', filename='js/mobile-header/metaArrows.js') }}"></script>
 </body>

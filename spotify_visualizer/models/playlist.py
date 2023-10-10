@@ -10,7 +10,6 @@ from spotify_visualizer.models.track import Track
 
 class Playlist():
 
-
     def __init__(self, id=None, source="mongo", debug=False):
         """Constructor that creates a playlist either based on the
         information stored in it's mongo collection (default) or
@@ -63,7 +62,7 @@ class Playlist():
         if source == "spotify":
             self.update_playlist_tracks()
 
-    
+
     def update_playlist_tracks(self, type="update"):
         """Entry point into updating the playlist.
 
@@ -76,12 +75,12 @@ class Playlist():
 
         playlist = None
         if self.id: # Not liked songs
-            playlist = self._playlist_meta()
+            playlist = self.__playlist_meta()
 
         if self.debug:
             print(f"Playlist Update Type: {type}")
 
-        self._modify_playlist(playlist=playlist, type=type)
+        self.__modify_playlist(playlist=playlist, type=type)
         
         self.tracks = [Track(track, debug=True) for track in self.track_docs]
 
@@ -106,6 +105,48 @@ class Playlist():
         
         return False
     
+
+    def get_total_duration_string(self):
+        """Calculates the total duration of the playlist
+        and returns a string to be used on the front-end for
+        playlist meta information. 
+        
+        If the playlist is less than 1 hour long, the string will
+        only include minutes and seconds.
+
+        :return: Total duration of the playlist as a string
+        formated "{} hours {} minutes {} seconds"
+        :rtype: str
+        """
+
+        # NOTE: Fieldnames??
+        HOURS = "hours"
+        MINUTES = "minutes"
+        SECONDS = "seconds"
+        
+        total_ms = 0
+
+        for track in self.tracks:
+            total_ms += track.duration_ms
+
+        # Hour(s), Minute(s), Second(s)
+        h = total_ms // 3600000
+        m = (total_ms % 3600000) // 60000
+        s = (total_ms % 60000) // 1000
+
+        # Singluar
+        if h == 1:
+            HOURS = HOURS.rstrip("s")
+        if m == 1:
+            MINUTES = MINUTES.rstrip("s")
+        if s == 1:
+            SECONDS = SECONDS.rstrip("s")
+
+        if h == 0:
+            return f"{m} {MINUTES} {s} {SECONDS}"
+        
+        return f"{h} {HOURS} {m} {MINUTES} {s} {SECONDS}" 
+
 
     def delete_playlist():
         pass
@@ -170,7 +211,7 @@ class Playlist():
         return tracks
 
 
-    def _liked_songs_meta(self, total_tracks):
+    def __liked_songs_meta(self, total_tracks):
         """For the 'Liked Songs' playlist return
         it's meta information.
 
@@ -189,7 +230,7 @@ class Playlist():
         }
 
 
-    def _playlist_meta(self):
+    def __playlist_meta(self):
         """For regular playlist's sends a request to 
         the spotify playlist endpoint in order to retrieve
         meta information on the playlist as well as the first
@@ -215,6 +256,7 @@ class Playlist():
             "url": playlist_info["external_urls"].get("spotify"),
             "images": playlist_info.get("images"),
             "total_tracks":playlist_info["tracks"].get("total"),
+            "public": playlist_info.get("public"),
             "user_id": self.user_id,
             "updated_at": datetime.datetime.now()
         }
@@ -225,7 +267,7 @@ class Playlist():
         }
     
     
-    def _get_song_id_set(self, tracks):
+    def __get_song_id_set(self, tracks):
         """Helper function to convert a playlist's 
         songs into a set of the songs spotify id.
 
@@ -242,7 +284,7 @@ class Playlist():
         return songs_set
     
 
-    def _update_mongo_playlist(self, current_tracks): # TODO: Return??
+    def __update_mongo_playlist(self, current_tracks): # TODO: Return??
         """Updates the playlists' mongo collection based off
         the most recently pulled tracks from user's spotify.
 
@@ -250,8 +292,8 @@ class Playlist():
         :type current_tracks: list of dicts
         """
 
-        original_track_ids = self._get_song_id_set(self.track_docs)
-        most_recent_track_ids = self._get_song_id_set(current_tracks)
+        original_track_ids = self.__get_song_id_set(self.track_docs)
+        most_recent_track_ids = self.__get_song_id_set(current_tracks)
 
         add_tracks = []
         delete_tracks = []
@@ -285,7 +327,7 @@ class Playlist():
             print("Error adding tracks to playlist:", e)
 
 
-    def _modify_playlist(self, playlist, type="update"):
+    def __modify_playlist(self, playlist, type="update"):
         """The meat and potatoes for modifying a playlist.
         Handles the updating of playlists' mongo collection 
         with the most recently pulled tracks and meta information.
@@ -341,7 +383,7 @@ class Playlist():
             data = r.json()
 
             if not playlist and not meta:
-                self.meta = self._liked_songs_meta(data.get("total", self.total_tracks))
+                self.meta = self.__liked_songs_meta(data.get("total", self.total_tracks))
                 meta = True
 
             url = data.get("next", None)
@@ -357,7 +399,7 @@ class Playlist():
                 current_tracks += tracks
 
         if not batch:
-            self._update_mongo_playlist(current_tracks)
+            self.__update_mongo_playlist(current_tracks)
             self.track_docs = current_tracks
 
         self.PLAYLIST_COLLECTION.update_one({"_id": "meta"}, {"$set": self.meta}, upsert=True)

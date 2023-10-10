@@ -1,43 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spotify Visualizer | {{playlist.name}} </title>
-    <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+    <title>Liked Songs | Spotify Visualizer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
+
 <body>
-    
     {% include "_header.html" %}
 
     <div class="playlist-header container">
-        <div class="playlist-image-placeholder"></div>
-        <h1>{{playlist["meta"].get("name")}}</h1>
+        <div class="mobile-meta-arrow-container">
+            {% if update == False %}
+                <img id="meta-arrow-left" class="meta-arrow meta-arrow-off"
+                src="{{url_for('static', filename='svg/playlist-meta-left.svg')}}" alt="">
+            {% else %}
+                <img id="meta-arrow-left" class="meta-arrow"
+                    src="{{url_for('static', filename='svg/playlist-meta-left.svg')}}" alt="">
+            {% endif %}  
+        </div>
 
-        <p>Tracks: {{playlist.total_tracks}}</p>
-        <p>Updated At: {{playlist.meta.get("updated_at", "N/A")}}</p>
-
-        <button>Update Playlist</button>
-    </div>
-
-    <button>Visualizer</button>
-     
-    <hr>
-
-    <div class="playlist-songs containter">
-
-        {% for track in playlist.tracks %}
-            <div class="playlist">
-                <div class="playlist_meta">
-                    <h2>{{track.name}}</h2>
-                    <p>{{track.artists[0].get("name")}}</p> <!-- TODO: Show all artists on the track -->
-                    <p>{{track.bpm}} - {{track.camelot_notation}}</p>
+        <div class="header-meta-container">
+            {% if update == False %}
+                <div id="meta-image">
+                    <img id="default-playlist-img"
+                        src="{{url_for('static', filename='img/spotify_assets/icon/Spotify_Icon_RGB_Green.png')}}"
+                        alt="Liked Songs cover art.">
                 </div>
-            </div>
-        {% endfor %}
+                <div id="header-meta" style="display: none;">
+            {% else %}
+                <div id="meta-image" style="display: none;">
+                    <img id="default-playlist-img"
+                        src="{{url_for('static', filename='img/spotify_assets/icon/Spotify_Icon_RGB_Green.png')}}"
+                        alt="Liked Songs cover art.">
+                </div>
+                <div id="header-meta">
+            {% endif %}
+                    <ul>
+                        <li>Tracks: {{ playlist.total_tracks }}</li>
+                        <li>{{ playlist.get_total_duration_string() }}</li>
+                    </ul>
+                    <div id="meta-playlist-update">
+                        <p>Last Updated: 09-21-2023</p>
+                        <button id="update-playlist-btn">Update Playlist</button>
+                    </div>
+                </div>
+        </div>
 
+        <div class="mobile-meta-arrow-container">
+            {% if update == False %}
+                <img id="meta-arrow-right" class="meta-arrow"
+                    src="{{url_for('static', filename='svg/playlist-meta-right.svg')}}" alt="">
+            {% else %}
+                <img id="meta-arrow-right" class="meta-arrow"
+                    src="{{url_for('static', filename='svg/playlist-meta-right.svg')}}" alt="">
+            {% endif %}  
+        </div>
     </div>
 
+    <h1 id="playlist-name">Liked Songs</h1>
 
+    <!-- <button>Visualizer</button> -->
+
+    <div class="playlist-tracks-header container">
+        <div class="track-labels">
+            <h2 id="tracks-header">Tracks:</h1>
+            <div class="playlist-tracks-labels_analysis">
+                <span>BPM</span>
+                <span>KEY</span>
+            </div>
+        </div>
+        <div class="tracks-filter-container">
+            <hr>
+            <span id="toggle-tracks-filter">&#9660;</span>
+        </div>
+    </div>
+
+    <div class="playlist-tracks container">
+        {% for track in playlist.tracks %}
+            <a class="track" href="#" loading>
+                <div class="track_album-cover">
+                    {% if track.album_cover %}
+                        <img src="{{ track.album_cover }}" alt="{{ track.name }} album cover" loading="lazy">
+                    {% else %}
+                        <img id="default-playlist-img"
+                            src="{{url_for('static', filename='img/spotify_assets/icon/Spotify_Icon_RGB_Green.png')}}"
+                            alt="Track cover art"
+                            loading="lazy"
+                            >
+                    {% endif %}
+                </div>
+                <div class="track-meta">
+                    <div class="track-meta_identifiers">
+                        <h3 class="track-meta_name">{{ track.name }}</h3>
+                        <p class="track-meta_artists">{{ track.get_artists_string() }}</p>
+                        <!-- TODO: Show all artists on the track -->
+                    </div>
+                    <div class="track-meta_analysis">
+                        <span id="track-meta_analysis-bpm">{{ track.bpm }}</span>
+                        <span id="track-meta_analysis-key">{{ track.camelot_notation }}</span>
+                    </div>
+                </div>
+            </a>
+        {% endfor %}
+        <span class="playlist-total-tracks">Total: {{ playlist.total_tracks }}</span>
+    </div>
+
+    <script src="{{url_for('static', filename='js/mobile-header/metaArrows.js')}}"></script>
+    <script src="{{url_for('static', filename='js/playlist/updateButton.js')}}"></script>
 </body>
 </html>

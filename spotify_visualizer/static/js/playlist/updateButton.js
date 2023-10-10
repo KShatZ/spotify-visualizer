@@ -1,15 +1,14 @@
-const path = window.location.pathname;
-const playlistId = path.slice(10);
+const updateButton = document.getElementById("update-playlist-btn");
+const playlistID = updateButton.getAttribute("value");
 
-const fetch_url = `/playlist/update/${playlistId}`;
+const fetch_url = `/playlist/update/${playlistID}`;
 const fetch_options = {
     "method": "POST",
     "headers": {
-        "Content-Type": "application/json"
-    }
+        "Content-Type": "application/json",
+    },
 };
 
-const updateButton = document.getElementById("update-playlist-btn");
 updateButton.addEventListener("click", async () => {
 
     const response = await fetch(fetch_url, fetch_options);
@@ -17,9 +16,8 @@ updateButton.addEventListener("click", async () => {
     if (response.status == 200) {
         const data = await response.json();
 
-        window.location.href = `/playlist/${data["playlist"]["id"]}`;
+        window.location.href = `/playlist/${data["playlist"]["id"]}?update=spotify`;
     }
 
     // TODO: Handle 500 
-
 });

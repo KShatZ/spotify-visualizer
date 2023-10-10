@@ -1,4 +1,6 @@
+/* --------------------- */
 /* ------ Globals ------ */
+/* --------------------- */
 *,
 *::before,
 *::after {
@@ -8,19 +10,29 @@
 }
 
 body {
-    row-gap: 15px;
+    background-color: rgba(18, 18, 18, 1);
+    color: #B0D4AC;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    row-gap: 15px;
     scroll-behavior: smooth;
 }
 
 a {
     text-decoration: none;
-    color:#000000;
+    color:#B0D4AC;
 } a:visited {
     text-decoration: none;
-    color: #000000;
+    color: #B0D4AC;
+}
+
+hr {
+    border-style: solid;
+}
+
+li {
+    list-style: none;
 }
 
 .container {
@@ -28,87 +40,170 @@ a {
     padding: 0 15px;
     width: 100%;
     max-width: 1024px;
-    /* border: 1px blue solid; */
 }
 
 
-/* Navigation */
+/* ------------------------ */
+/* ------ Navigation ------ */
+/* ------------------------ */
 nav {
-    border: 1px red solid;
-    height: 50px;
+    height: 65px;
     width: 100%;
-    /* margin-bottom: -15px; */
+    margin-bottom: 10px;
 }
 
 .nav-container {
     align-items: center;
-    justify-content: space-between;
+    background-color: rgb(250, 249, 246, .2);
     display: flex;
     height: 100%;
+    justify-content: space-between;
 }
 
-/* Dashboard */
-.spotify-asset img{
-    width: 75px;
-    height: auto;
+
+/* ----------------------------------- */
+/* ------ Mobile Header Section ------ */
+/* ----------------------------------- */
+.mobile-meta-arrow-container {
+    height: 64px;
+    width: 64px;
+    display: flex;
 }
 
-.user-section {
+.header-meta-container {
+    border: 1px rgb(250, 249, 246, .2) solid;
+    display: flex;
+    height: 205px;
+    padding: 3px;
+    width: 205px;
+}
+
+#meta-image {
+    background-color: #000000;
+    display: flex;
+    width: 100%;
+}
+
+#header-meta {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 100%;
+}
+
+#header-meta ul {
     align-items: center;
     display: flex;
     flex-direction: column;
 }
 
-.user-section_header {
-    align-items: flex-start;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 25px;
-    width: 100%;
+#header-meta li {
+    margin-bottom: 2px;
+    text-align: center;
 }
 
-.user-section_spotify-logo {
-    height: auto;
-    width: 150px;
-}
-
-#profile-picture {
-    height: auto;
-    width: 150px;
-}
-
-.user-section_user-stats {
+#meta-playlist-update {
     align-items: center;
     display: flex;
-    justify-content: space-between;
-    margin-top: 25px;
+    flex-direction: column;
     width: 100%;
+}
 
-} 
+#playlist-updated-date {
+    margin-top: 2px;
+}
 
-.user-section_user-stats li {
-    list-style: none;
-    margin-bottom: 10px;
+#update-playlist-btn {
+    background-color: rgba(18, 18, 18, 1);
+    border: 1px rgb(250, 249, 246, .2) solid;
+    border-radius: 3px;
+    color: #B0D4AC;
+    opacity: .9;
+    padding: 7px;
+    margin-top: 10px;
+}
+
+#profile-url {
+    background-color: rgba(18, 18, 18, 1);
+    border: 1px rgb(250, 249, 246, .2) solid;
+    border-radius: 3px;
+    color: #B0D4AC;
+    margin-top: 15px;
+    opacity: .9;
+    padding: 7px;
+    margin-top: 20px;
+}
+
+.meta-arrow {
+    filter: brightness(0) saturate(100%) invert(94%) sepia(12%) saturate(680%) hue-rotate(55deg) brightness(89%) contrast(85%) opacity(35%);
+}
+
+.meta-arrow-off {
+    opacity: .2;
+}
+
+
+/* ---------------------------- */
+/* ------ Dashboard View ------ */
+/* ---------------------------- */
+.spotify-profile-header {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+#users-display-name {
+    margin-top: -5px;
+    align-self: center;
 }
 
 .playlists {
     display: flex;
     flex-direction: column;
     row-gap: 35px;
+    padding-bottom: 10px;
+    overflow-y: scroll;
+    max-height: 90vh;
+}
+
+.playlists-header-filter-container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+}
+
+.playlists-header-filter-container hr{
+    opacity: 50%;
+    width: 100%;
+}
+
+#toggle-playlists-filter {
+    opacity: 50%;
+    font-size: 10px;
+    font-weight: bold;
+    padding-top: 3px;
 }
 
 .playlist {
     display: flex;
 }
 
+#default-playlist-img {
+    padding: 10%;
+}
+
 .playlist_album-art {
+    background-color: #000000;
+    display: flex;
     height: 75px;
     width: 75px;
-    border: 1px solid black;
 }
 
 .playlist_meta {
     margin-left: 25px;
+    width: 175px;
 } 
 
 .playlist_meta h2 {
@@ -117,4 +212,141 @@ nav {
 
 .playlist_meta p {
     padding-bottom: 2px;
+}
+
+.playlist-caret {
+    display: flex;
+    align-items: center;
+}
+
+.playlist-caret-svg {
+    height: auto;
+    width: 20px;
+    margin-left: 45px;
+    margin-bottom: 11px;
+    filter: brightness(0) saturate(100%) invert(94%) sepia(12%) saturate(680%) hue-rotate(55deg) brightness(89%) contrast(85%) opacity(35%);
+}
+
+
+/* --------------------------- */
+/* ------ Playlist View ------ */
+/* --------------------------- */
+.playlist-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#liked-songs-cover {
+    background-color: #000000;
+    display: flex;
+    width: 100%;
+}
+
+#playlist-name {
+    margin-top: -5px;
+    align-self: center;
+}
+
+.track-labels {
+    align-items: flex-end;
+    justify-content: space-between;
+    display: flex;
+}
+
+.playlist-tracks-labels_analysis {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    margin-bottom: 4px;
+    width: 65px;
+}
+
+#tracks-header {
+    font-size: 30px;
+    font-weight: bolder;
+}
+
+.tracks-filter-container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.tracks-filter-container hr {
+    margin-top: 5px;
+    opacity: 50%;
+    width: 100%;
+}
+
+#toggle-tracks-filter {
+    opacity: 50%;
+    font-size: 10px;
+    font-weight: bold;
+    padding-top: 3px;
+}
+
+.playlist-tracks {
+    display: flex;
+    flex-direction: column;
+    max-height: 90vh;
+    overflow-y: scroll;
+    padding-bottom: 15px;
+    row-gap: 30px;
+}
+
+.track {
+    display: flex;
+}
+
+.track_album-cover {
+    background-color: #000000;
+    display: flex;
+    height: 75px;
+    width: 75px;
+}
+
+.track-meta {
+    justify-content: space-between;
+    display: flex;
+    width: 100%;
+}
+
+.track-meta_identifiers {
+    display: flex;
+    flex-direction: column;
+    margin-left: 15px;
+    row-gap: 5px;
+    max-width: 67%;
+}
+
+.track-meta_name {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.track-meta_artists {
+    font-size: 12px;
+    font-weight: 100;
+}
+
+.track-meta_analysis {
+    font-size: 16px;
+    font-weight: 100;
+    display: flex;
+    justify-content: space-between;
+    width: 65px;
+}
+
+.playlist-total-tracks {
+    align-self: center;
+    opacity: 85%;
+    margin-top: -15px;
+}
+
+.spotify-credit {
+    display: flex;
+    justify-content: center;
+    height: auto;
+    width: 75px;
 }

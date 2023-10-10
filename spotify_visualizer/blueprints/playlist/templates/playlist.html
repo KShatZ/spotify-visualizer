@@ -3,42 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spotify Visualizer | {{playlist["meta"].get("name")}} </title>
-    <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+    <title>{{ playlist["meta"].get("name") }} | Spotify Visualizer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
+
 <body>
-    
     {% include "_header.html" %}
 
     <div class="playlist-header container">
-        <div class="playlist-image-placeholder"></div>
-        <h1>{{playlist["meta"].get("name")}}</h1>
+        <div class="mobile-meta-arrow-container">
+            {% if update == False %}
+                <img id="meta-arrow-left" class="meta-arrow meta-arrow-off"
+                    src="{{url_for('static', filename='svg/playlist-meta-left.svg')}}" alt="">
+            {% else %}
+                <img id="meta-arrow-left" class="meta-arrow"
+                    src="{{url_for('static', filename='svg/playlist-meta-left.svg')}}" alt="">
+            {% endif %}   
+        </div>
 
-        <p>Tracks: {{playlist.total_tracks}}</p>
-        <p>Followers: {{playlist.meta.get("followers", "N/A")}}</p>
-        <p>Updated At: {{playlist.meta.get("updated_at", "N/A")}}</p>
-
-        <button id="update-playlist-btn">Update Playlist</button>
-    </div>
-
-    <button>Visualizer</button>
-     
-    <hr>
-
-    <div class="playlist-songs containter">
-
-        {% for track in playlist.tracks %}
-            <div class="playlist">
-                <div class="playlist_meta">
-                    <h2>{{track.name}}</h2>
-                    <p>{{track.artists[0].get("name")}}</p> <!-- TODO: Show all artists on the track -->
-                    <p>{{track.bpm}} - {{track.camelot_notation}}</p>
+        <div class="header-meta-container">
+            {% if update == False %}
+                <img id="meta-image" src="{{ playlist.meta['images'][0].get('url') }}"
+                    alt=" Playlist {{ playlist.meta.get('name') }} spotify image">
+                <div id="header-meta" style="display: none;">
+            {% else %}
+                <img id="meta-image" style="display: none;" src="{{ playlist.meta['images'][0].get('url') }}"
+                    alt=" Playlist {{ playlist.meta.get('name') }} spotify image">
+                <div id="header-meta">
+            {% endif %}
+                    <ul>
+                        {% if playlist.meta.get("public") %}
+                            <li>Public Playlist</li>
+                            <li>Followers: {{playlist.meta.get("followers", "N/A")}}</li>
+                        {% else %}
+                            <li>Private Playlist</li>
+                        {% endif %}
+                    </ul>
+                    <ul>
+                        <li>Tracks: {{playlist.total_tracks}}</li>
+                        <li>{{ playlist.get_total_duration_string() }}</li>
+                    </ul>
+                    <div id="meta-playlist-update">
+                        <p>Last Updated:</p>
+                        <p id="playlist-updated-date">{{ playlist.meta.get("updated_at").strftime("%m/%d/%Y %-I:%M %p") }}</p>
+                        <button id="update-playlist-btn" value="{{ playlist.id }}">Update Playlist</button>
+                    </div>
                 </div>
-            </div>
-        {% endfor %}
+        </div>
 
+        <div class="mobile-meta-arrow-container">
+            {% if update == False %}
+                <img id="meta-arrow-right" class="meta-arrow"
+                    src="{{url_for('static', filename='svg/playlist-meta-right.svg')}}" alt="">    
+            {% else %}
+                <img id="meta-arrow-right" class="meta-arrow meta-arrow-off"
+                    src="{{url_for('static', filename='svg/playlist-meta-right.svg')}}" alt="">
+            {% endif %}  
+        </div>
     </div>
 
-<script src="{{url_for('static', filename='js/playlist/updateButton.js')}}"></script>
+    <h1 id="playlist-name">{{ playlist["meta"].get("name") }}</h1>
+
+    <!-- <button>Visualizer</button> -->
+
+    <div class="playlist-tracks-header container">
+        <div class="track-labels">
+            <h2 id="tracks-header">Tracks:</h2>
+                <div class="playlist-tracks-labels_analysis">
+                    <span>BPM</span>
+                    <span>KEY</span>
+                </div>
+        </div>
+        <div class="tracks-filter-container">
+            <hr>
+            <span id="toggle-tracks-filter">&#9660;</span>
+        </div>
+    </div>
+
+    <div class="playlist-tracks container">
+        {% for track in playlist.tracks %}
+            <a class="track" href="#">
+                <div class="track_album-cover">
+                    {% if track.album_cover %}
+                        <img src="{{ track.album_cover }}" alt="{{ track.name }} album cover">
+                    {% else %}
+                        <img id="default-playlist-img"
+                            src="{{url_for('static', filename='img/spotify_assets/logo/Spotify_Icon_RGB_Green.png')}}"
+                            alt="Album Cover">
+                    {% endif %}
+                </div>
+                <div class="track-meta">
+                    <div class="track-meta_identifiers">
+                        <h3 class="track-meta_name">{{ track.name }}</h3>
+                        <p class="track-meta_artists">{{ track.get_artists_string() }}</p>
+                    </div>
+                    <div class="track-meta_analysis">
+                        <span id="track-meta_analysis-bpm">{{ track.bpm }}</span>
+                        <span id="track-meta_analysis-key">{{ track.camelot_notation }}</span>
+                    </div>
+                </div>
+            </a>
+        {% endfor %}
+        <span class="playlist-total-tracks">Total: {{ playlist.total_tracks }}</span>
+    </div>
+
+    <script src="{{url_for('static', filename='js/mobile-header/metaArrows.js')}}"></script>
+    <script src="{{url_for('static', filename='js/playlist/updateButton.js')}}"></script>
 </body>
 </html>

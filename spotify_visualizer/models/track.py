@@ -10,8 +10,9 @@ class Track():
         self.id = track.get("id")
         self.spotify_url = track["external_urls"].get("spotify")
         self.name = track.get("name")
-        self.__set_artists(track.get("artists"))
         self.duration_ms = track.get("duration_ms")
+        self.__set_album_cover(track["album"].get("images", []))
+        self.__set_artists(track.get("artists"))
 
         audio_features = doc.get("audio_features")
         self.key = audio_features.get("key")
@@ -21,6 +22,27 @@ class Track():
 
         if self.debug:
             print("Track created:", self.name)
+
+
+    def get_artists_string(self):
+        """Formats the tracks' artists property into a 
+        string with the artist names delimited with a comma and
+        space.
+
+        ** Used on the front-end to list the artists
+
+        :return: The artists apart of the track
+        :rtype: str
+        """
+
+        artists = ""
+        for artist in self.artists:
+            
+            name = artist.get("name")
+            name += ", "
+            artists += name
+
+        return artists.rstrip(", ")
 
 
     def get_genre(self):
@@ -68,5 +90,18 @@ class Track():
             })
 
 
+    def __set_album_cover(self, images): #TODO: @property
+        """Setter that sets the album cover for the track. 
+        If no album cover is present at the update time of the 
+        playlist, then the property is set to None.
 
+        :param images: Images array found in mongo track doc track.album.images
+        :type images: list
+        """
+        
+        try: 
+            cover = images[0].get("url")
+        except:
+            cover = None
 
+        self.album_cover = cover

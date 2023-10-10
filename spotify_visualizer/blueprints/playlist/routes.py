@@ -1,7 +1,5 @@
-from flask import render_template
+from flask import request, render_template
 from flask_login import current_user, login_required
-
-from pprint import pprint
 
 from spotify_visualizer.blueprints.playlist import PlaylistBlueprint
 from spotify_visualizer.models.playlist import Playlist
@@ -22,7 +20,11 @@ def render_playlist_page(playlist_id):
     if playlist.total_tracks == 0:
         playlist.update_playlist_tracks()
     
-    return render_template(template, playlist=playlist)
+    update = False
+    if request.args.get("update"): # NOTE: Maybe might need specific check later on...
+        update = True
+
+    return render_template(template, playlist=playlist, update=update)
 
 
 @PlaylistBlueprint.post("/playlist/update/<playlist_id>")
