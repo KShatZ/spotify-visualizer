@@ -15,12 +15,13 @@ load_dotenv()
 @SpotifyBlueprint.get("/spotify/auth")
 def spotify_auth():
 
-    # Might want to offload this like stfy-field_name??
+    # NOTE: Might want to offload this like stfy-field_name??
     auth_code_params = {
         "client_id": os.getenv("SPOTIFY_CLIENT_ID"), 
         "response_type": "code",
         "redirect_uri": os.getenv("SPOTIFY_REDIRECT_URI"),
         "scope":"user-library-read user-read-private playlist-read-private user-follow-read",
+        "show_dialog": True
     }
 
     endpoint = "https://accounts.spotify.com/authorize?" + urlencode(auth_code_params)
@@ -46,7 +47,7 @@ def validate_auth_code():
     access_token_params = {
         "grant_type": "authorization_code",
         "code": auth_code,
-        "redirect_uri": "http://localhost:5000/spotify/auth/validate",
+        "redirect_uri": os.getenv("SPOTIFY_REDIRECT_URI"),
         "client_id": os.getenv("SPOTIFY_CLIENT_ID"),
         "client_secret": os.getenv("SPOTIFY_CLIENT_SECRET"), 
     }
@@ -57,6 +58,6 @@ def validate_auth_code():
 
     if not spotify_auth:
         # TODO: Take care of when user does not get updated
-        redirect("/login"), 500
+        return redirect("/login")
 
-    return redirect("/"), 200
+    return redirect("/")
