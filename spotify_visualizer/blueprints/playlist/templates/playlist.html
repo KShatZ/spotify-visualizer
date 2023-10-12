@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 
-<body>
+<body class="bg-color txt-color">
     {% include "_header.html" %}
 
     <div class="playlist-header container">
@@ -66,13 +66,13 @@
 
     <!-- <button>Visualizer</button> -->
 
-    <div class="playlist-tracks-header container">
+    <div id="playlist-tracks-header" class="container">
         <div class="track-labels">
             <h2 id="tracks-header">Tracks:</h2>
-                <div class="playlist-tracks-labels_analysis">
-                    <span>BPM</span>
-                    <span>KEY</span>
-                </div>
+            <div class="playlist-tracks-labels_analysis">
+                <span>BPM</span>
+                <span>KEY</span>
+            </div>
         </div>
         <div class="tracks-filter-container">
             <hr>

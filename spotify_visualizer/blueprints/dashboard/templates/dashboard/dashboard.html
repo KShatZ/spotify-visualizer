@@ -5,12 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard | Spotify Visualizer</title>
     <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+
+    <script src="https://kit.fontawesome.com/f0a5ef4c3d.js" crossorigin="anonymous"></script> <!-- For Now -->
 </head>
 
-<body>
+<body class="bg-color txt-color">
     {% include "_header.html" %}
 
-    <div class="spotify-profile-header container">
+    <div id="spotify-profile-header" class="container">
         <div class="mobile-meta-arrow-container">
             <img id="meta-arrow-left" class="meta-arrow meta-arrow-off"
             src="{{url_for('static', filename='svg/playlist-meta-left.svg')}}" alt="">
@@ -39,30 +41,30 @@
         </div>
     </div>
 
-    <h1 id="users-display-name">{{ t.display_name }}</h1>
-   
-    <!-- Rework This -->
     <div class="container">
-        <div class="track-labels">
-            <h2 id="tracks-header">Your Playlists:</h2>
-                <div class="playlist-tracks-labels_analysis">
-
-                </div>
-        </div>
-        <div class="tracks-filter-container">
-            <hr>
-            <span id="toggle-tracks-filter">&#9660;</span>
-        </div>
+        <h1 id="users-display-name">{{ t.display_name }}</h1>
     </div>
    
-    <div class="playlists container">
+    <div id="your-playlists-header" class="container elevated">
+        <div id="your-playlists-header-labels">
+            <h2>Your Playlists:</h2>
+            <div id="playlists-filter-view">
+                <i class="fa-solid fa-sort"></i>
+                <span>Default</span>
+            </div>
+        </div>
+        <hr>
+        <span id="toggle-playlists-filter">&#9660;</span>
+    </div>
+   
+    <div id="playlists" class="container">
         <a class="playlist" href="/playlist/liked-songs">
             <div class="playlist_album-art">
                 <img id="default-playlist-img" src="{{ url_for('static', filename='img/spotify_assets/icon/Spotify_Icon_RGB_Green.png') }}" alt="Liked Songs cover art.">
             </div>
 
             <div class="playlist_meta">
-                <h2>Liked Songs</h2>
+                <h3>Liked Songs</h3>
                 <p>Tracks: {{t.total_tracks}}</p>
             </div>
 
@@ -82,7 +84,7 @@
                 </div>
 
                 <div class="playlist_meta">
-                    <h2>{{playlist.get("name")}}</h2>
+                    <h3>{{playlist.get("name")}}</h3>
                     <p>Tracks: {{playlist.get("track_count")}}</p>
                 </div>
 
@@ -90,6 +92,7 @@
                     <img class="playlist-caret-svg" src="{{url_for('static', filename='svg/right.svg')}}" alt="">
                 </div>
             </a>
+
         {% endfor %}
     </div>
 
