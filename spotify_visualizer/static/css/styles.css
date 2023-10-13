@@ -21,8 +21,8 @@
 }
 
 .accent {
-    /* color: rgba(30,215,96,1); */
-    color: rgba(2, 169, 247, 1);
+    color: rgba(30,215,96,1);
+    /* color: rgba(2, 169, 247, 1); */
 }
 
 
@@ -66,9 +66,19 @@ nav {
 a {
     text-decoration: none;
     color: rgba(250, 249, 246, .85);
+    cursor: pointer;
 } a:visited {
     text-decoration: none;
     color: rgba(250, 249, 246, .85);
+}
+
+button {
+    background: none;
+    border: 1px rgb(250, 249, 246, .2) solid;
+    color: rgba(250, 249, 246, .85);
+    outline: none;
+    padding: 0;
+    cursor: pointer;
 }
 
 hr {
@@ -96,6 +106,116 @@ li {
     justify-content: space-between;
 }
 
+
+/* ---------------------------- */
+/* ------ Login/Register ------ */
+/* ---------------------------- */
+
+#auth-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#auth-header-spot-logo {
+    margin-top: 55px;
+    margin-bottom: 15px;
+    height: 125px;
+    width: 125px;
+}
+
+#auth-header hr {
+    margin-top: 25px;
+    border-color: rgb(250, 249, 246, .2);
+    width: 100%;
+}
+
+#auth-form-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.auth-form {
+    border: 1px rgb(250, 249, 246, .2) solid;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    height: 415px;
+    margin-top: 50px;
+    padding: 20px;
+    width: 80%;
+}
+
+.auth-form h1 {
+    margin-bottom: 25px;
+}
+
+#auth-inputs {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
+#auth-inputs input {
+    background-color: rgba(18, 18, 18, 1);
+    border: 1px rgb(250, 249, 246, .2) solid;
+    border-radius: 3px;
+    color: rgba(250, 249, 246, .85);
+    height: 35px;
+    outline: none !important;
+    padding-left: 10px;
+}
+
+#auth-inputs input:focus {
+    border-color: rgba(30,215,96,1);
+    box-shadow: 0 0 5px rgba(30,215,96,.3);
+}
+
+.auth-input-group {
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+}
+
+.auth-form button {
+    align-self: center;
+    padding: 10px;
+    margin-top: 35px;
+    margin-bottom: 15px;
+    width: 50%;
+}
+
+#auth-redirect {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: 12px;
+    font-weight: 100px;
+}
+
+#auth-redirect a {
+    text-decoration: underline;
+}
+
+#dev-by {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: 13px;
+    font-weight: 100;
+    opacity: .5;
+    padding-bottom: 10px;
+}
+
+#dev-by a {
+    text-decoration: underline;
+}
 
 /* ----------------------------------- */
 /* ------ Mobile Header Section ------ */

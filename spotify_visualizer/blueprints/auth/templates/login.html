@@ -4,19 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login | Spotify Visualizer</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
 </head>
-<body> 
-    <h1>Login:</h1>
+<body class="bg-color txt-color"> 
+    
+    <div id="auth-header" class="accent container">
+        <img id="auth-header-spot-logo" src="{{ url_for('static', filename='img/spotify_assets/icon/Spotify_Icon_RGB_Green.png') }}" alt="">
+        <h1 id="auth-header-logo">Spotify Visualizer</h1>
+        <hr>
+    </div>
+    
+    <div id="auth-form-container" class="container">
+        <form id="loginForm" class="auth-form" action="/login" method="POST">
 
-    <form id="loginForm" action="/login" method="POST">
-        <label for="username">Username:</label>
-        <input id="username" type="text" name="username" required>
+            <h1>Login:</h1>
 
-        <label for="password">Password:</label>
-        <input id="username" type="password" name="password" required>
+            <div id="auth-inputs">
+                <div class="auth-input-group">
+                    <label for="username">Username:</label>
+                    <input id="username" type="text" name="username" required>
+                </div>
+        
+                <div class="auth-input-group">
+                    <label for="password">Password:</label>
+                    <input id="username" type="password" name="password" required>
+                </div>
+            </div>
 
-        <button type="submit">Login</button>
-    </form>
+            <button type="submit">Login</button>
+    
+            <div id="auth-redirect">
+                <p>Don't have an account?</p>
+                <a href="/register">Create Account</a>
+            </div>
+        </form>
+    </div>
+
+    <div id="dev-by" class="container">
+        <p>Developed By: <a href="https://github.com/KShatZ/spotify-visualizer">Kirill Shats</a></p>
+    </div>
 
     <script src="{{url_for('static', filename='js/auth/login.js')}}"></script>
 </body>

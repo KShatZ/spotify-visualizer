@@ -4,21 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register | Spotify Visualizer</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
 </head>
-<body>
+<body class="bg-color txt-color"> 
     
-    <h1>Register:</h1>
+    <div id="auth-header" class="accent container">
+        <img id="auth-header-spot-logo" src="{{ url_for('static', filename='img/spotify_assets/icon/Spotify_Icon_RGB_Green.png') }}" alt="">
+        <h1 id="auth-header-logo">Spotify Visualizer</h1>
+        <hr>
+    </div>
+    
+    <div id="auth-form-container" class="container">
+        <form id="registerForm" class="auth-form" action="/register" method="POST">
 
-    <form id="registerForm" action="/register" method="POST">
-        <label for="username">Username:</label>
-        <input id="username" type="text" name="username" required>
+            <h1>Register:</h1>
 
-        <label for="password">Password:</label>
-        <input id="username" type="password" name="password" required>
+            <div id="auth-inputs">
+                <div class="auth-input-group">
+                    <label for="username">Username:</label>
+                    <input id="username" type="text" name="username" required>
+                </div>
+        
+                <div class="auth-input-group">
+                    <label for="password">Password:</label>
+                    <input id="username" type="password" name="password" required>
+                </div>
+            </div>
 
-        <button type="submit">Create Account</button>
-    </form>
+            <button style="width: 65%;" type="submit">Create Account</button>
+    
+            <div id="auth-redirect">
+                <p>Already have an account?</p>
+                <a href="/login">Login</a>
+            </div>
+        </form>
+    </div>
+
+    <div id="dev-by" class="container">
+        <p>Developed By: <a href="https://github.com/KShatZ/spotify-visualizer">Kirill Shats</a></p>
+    </div>
 
     <script src="{{url_for('static', filename='js/auth/register.js')}}"></script>
 </body>
+
 </html>
