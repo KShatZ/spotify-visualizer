@@ -38,13 +38,10 @@
                 </div>
                 <div id="header-meta">
             {% endif %}
-                    <ul>
-                        <li>Tracks: {{ playlist.total_tracks }}</li>
-                        <li>{{ playlist.get_total_duration_string() }}</li>
-                    </ul>
-                    <div id="meta-playlist-update">
-                        <p>Last Updated: 09-21-2023</p>
-                        <button id="update-playlist-btn">Update Playlist</button>
+                    <div id="last-update-container">
+                        <span style="font-size: 17px;">Last Updated:</span>
+                        <span style="opacity: .8;">{{ playlist.meta.get("updated_at").strftime("%m/%d/%Y %-I:%M %p") }}</span>
+                        <button id="update-playlist-btn" value="{{ playlist.id }}">Update Playlist</button>
                     </div>
                 </div>
         </div>
@@ -60,43 +57,44 @@
         </div>
     </div>
 
-    <h1 id="playlist-name">Liked Songs</h1>
+    <div class="container" style="text-align: center;">
+        <h1 id="playlist-name">Liked Songs</h1>
+        <p id="playlist-duration">{{ playlist.get_total_duration_string() }}</p>
+    </div>
 
     <!-- <button>Visualizer</button> -->
 
-    <div class="playlist-tracks-header container">
-        <div class="track-labels">
-            <h2 id="tracks-header">Tracks:</h1>
-            <div class="playlist-tracks-labels_analysis">
+    <div id="playlist-tracks-header" class="container elevated">
+        <div id="playlist-tracks-labels">
+            <h2 id="tracks-header">Tracks:</h2>
+            <div id="tracks-filter-view" class="playlist-tracks-labels_analysis">
                 <span>BPM</span>
                 <span>KEY</span>
             </div>
         </div>
-        <div class="tracks-filter-container">
-            <hr>
-            <span id="toggle-tracks-filter">&#9660;</span>
-        </div>
+
+        <hr>
+        <!-- Filter Options Here -->
+        <span id="toggle-tracks-filter">&#9660;</span>
     </div>
 
-    <div class="playlist-tracks container">
+    <div id="playlist-tracks" class="container">
+        <span id="playlist-total-tracks">Total: {{ playlist.total_tracks }}</span>
         {% for track in playlist.tracks %}
-            <a class="track" href="#" loading>
+            <a class="track" href="#">
                 <div class="track_album-cover">
                     {% if track.album_cover %}
-                        <img src="{{ track.album_cover }}" alt="{{ track.name }} album cover" loading="lazy">
+                        <img src="{{ track.album_cover }}" alt="{{ track.name }} album cover">
                     {% else %}
                         <img id="default-playlist-img"
                             src="{{url_for('static', filename='img/spotify_assets/icon/Spotify_Icon_RGB_Green.png')}}"
-                            alt="Track cover art"
-                            loading="lazy"
-                            >
+                            alt="Album Cover">
                     {% endif %}
                 </div>
                 <div class="track-meta">
                     <div class="track-meta_identifiers">
-                        <h3 class="track-meta_name">{{ track.name }}</h3>
-                        <p class="track-meta_artists">{{ track.get_artists_string() }}</p>
-                        <!-- TODO: Show all artists on the track -->
+                        <h3 class="track-meta_name truncate-track-meta">{{ track.name }}</h3>
+                        <p class="track-meta_artists truncate-track-meta">{{ track.get_artists_string() }}</p>
                     </div>
                     <div class="track-meta_analysis">
                         <span id="track-meta_analysis-bpm">{{ track.bpm }}</span>
@@ -105,7 +103,6 @@
                 </div>
             </a>
         {% endfor %}
-        <span class="playlist-total-tracks">Total: {{ playlist.total_tracks }}</span>
     </div>
 
     <script src="{{url_for('static', filename='js/mobile-header/metaArrows.js')}}"></script>
