@@ -155,6 +155,15 @@ li {
 /* ------ Login/Register ------ */
 /* ---------------------------- */
 
+#form-error {
+    color: rgba(227, 66, 52, .75);
+    display: none;
+    font-size: 12px;
+    margin-top: 20px;
+    margin-bottom: -10px;
+    text-align: center;
+}
+
 #auth-header {
     display: flex;
     flex-direction: column;
@@ -186,7 +195,7 @@ li {
     border-radius: 5px;
     display: flex;
     flex-direction: column;
-    height: 415px;
+    height: 415px; 
     margin-top: 50px;
     padding: 20px;
     width: 80%;
@@ -232,13 +241,13 @@ li {
 }
 
 #auth-redirect {
+    align-items: center;
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
-    align-items: center;
-    justify-content: flex-end;
     font-size: 12px;
     font-weight: 100px;
+    justify-content: flex-end;
+    margin-top: 22px;
 }
 
 #auth-redirect a {

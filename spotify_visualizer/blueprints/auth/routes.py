@@ -79,7 +79,9 @@ def post_register():
     # TODO: Sanitize values, before sending to DB
 
     if (user_exists(username=user["username"])):
-        return "someStatusCode: Username exists" #TODO
+        return {
+            "msg": "That username already exists, please choose another one..."
+        }, 409
 
     user["spotify"] = None
     user["password"] = generate_password_hash(user["password"])
@@ -87,7 +89,9 @@ def post_register():
     user_id = create_user(user)
 
     if not user_id:
-        return "someStatusCode: There was an issue creating an account at this time. Please Try Again."
+        return {
+            "msg": "Please try again, there was an issue creating your account..."
+        }, 500
     
     print(f"Created New User: ObjectId({user_id})")
     return {
@@ -118,19 +122,23 @@ def login():
 
     user = get_user(username=username)
 
-    if not user:
-        # TODO: Log invalid login attempt
-        return "someStatusCode Username and/or password does not match our records"
+    if not user:        
+        return {
+            "msg": "Invalid username and password combination..."
+        }, 400
     
     if not authenticate_password_hash(username, password):
-        # TODO: Log invalid login attempt
-        return "someStatusCode Username and/or password does not match our records"
+        return {
+            "msg": "Invalid username and password combination..."
+        }, 400
     
     try:
         logged_in = login_user(User(user))
 
         if not logged_in:
-            return "someStatusCode couldn't log in for some reason"
+            return {
+                "msg": "There was an issue logging in, please try again..."
+            }, 500
 
         # Spotify OAuth Required
         if user["spotify"] == None:
@@ -144,8 +152,9 @@ def login():
         }, 200
 
     except:
-        #TODO: Better error handling
-        return "someStatusCode Issues logging in"
+        return {
+            "msg": "There was an issue logging in, please try again..."
+        }, 500
 
 
 # --------------------- #
