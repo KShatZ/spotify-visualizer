@@ -58,7 +58,7 @@ nav {
     position: sticky;
     top: 0;
     width: 100%;
-    z-index: 99;
+    z-index: 1;
     -webkit-box-shadow: 0px 10px 10px 0px rgba(0,0,0,0.25);
     -moz-box-shadow: 0px 10px 10px 0px rgba(0,0,0,0.25);
 }
@@ -99,11 +99,55 @@ li {
 /* ------------------------ */
 /* ------ Navigation ------ */
 /* ------------------------ */
-.nav-container {
+#main-nav {
     align-items: center;
     display: flex;
     height: 100%;
     justify-content: space-between;
+}
+
+#dropdown-toggle {
+    display: flex;
+    align-items: baseline;
+    min-width: 70px;
+}
+
+#dropdown-arrow {
+    font-size: 12px;
+    margin-left: 5px;
+    opacity: .5;
+    flex-grow: 1;
+}
+
+#nav-dropdown {
+    -webkit-box-shadow: 0px 8px 10px 1px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0px 8px 10px 1px rgba(0,0,0,0.5);  
+    background-color: rgb(18, 18, 18);
+    box-shadow: 0px 8px 10px 1px rgba(0,0,0,0.5);
+    display: none; 
+    font-size: 13px;
+    font-weight: 600px;
+    position: absolute;
+    top: 45px;
+    right: 20px;
+    padding: 2px;
+    width: 85px;
+    min-height: 30px;
+    text-align: center;
+    z-index: 2;
+}
+
+#nav-dropdown li {
+    align-items: center;
+    display: flex;
+    height: 30px;
+    justify-content: center;
+    z-index: 2;
+}
+
+#logout-btn {
+    border: none;
+    font-size: 13px;
 }
 
 
@@ -317,7 +361,7 @@ li {
     display: flex;
     flex-direction: column;
     margin-bottom: -15px;
-    z-index: 99;
+    z-index: 1;
 }
 
 #your-playlists-header hr {
