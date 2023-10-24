@@ -11,5 +11,4 @@ def get_homepage():
     if current_user.is_authenticated:
         return redirect("/dashboard")
 
-    return render_template("index.html")
-
+    return render_template("login.html")

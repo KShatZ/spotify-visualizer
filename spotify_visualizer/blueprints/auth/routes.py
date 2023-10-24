@@ -151,7 +151,7 @@ def login():
 # --------------------- #
 # ------ /logout ------ #
 # --------------------- #
-@AuthenticationBlueprint.get("/logout")
+@AuthenticationBlueprint.post("/logout")
 @login_required
 def logout():
     logout_user()
