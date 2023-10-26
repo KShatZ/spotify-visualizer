@@ -1,14 +1,22 @@
 services:
   mongo:
+    container_name: "mongo"
     image: "mongo"
     ports:
       - "127.0.0.1:27017:27017"
     restart: "always"
 
   visualizer:
+    container_name: "app"
     build:
-      context: ./
-      dockerfile: docker/Dockerfile
+      context: "./"
+      dockerfile: "docker/Dockerfile"
     ports:
       - "127.0.0.1:5000:5000"
+    environment:
+      - MONGO_URI=mongodb://mongo:27017 
+
+      - SPOTIFY_CLIENT_ID
+      - SPOTIFY_CLIENT_SECRET
+      - SPOTIFY_REDIRECT_URI
 

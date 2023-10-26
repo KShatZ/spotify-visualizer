@@ -1,8 +1,6 @@
 from flask import request, render_template, url_for, redirect, current_app
 from flask_login import login_user, login_required, logout_user, current_user
 
-from pymongo import MongoClient
-
 from werkzeug.security import generate_password_hash
 
 

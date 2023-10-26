@@ -6,6 +6,7 @@ from pymongo import MongoClient
 from spotify_visualizer.blueprints.spotify.helpers.user import get_access_token, refresh_access_token
 from spotify_visualizer.helpers.spotify_api import SpotifyRequest
 from spotify_visualizer.models.track import Track
+from spotify_visualizer.field_names import Mongo
 
 
 class Playlist():
@@ -37,7 +38,7 @@ class Playlist():
         self.user_id = current_user.id
         self.debug = debug
 
-        mongo = MongoClient()
+        mongo = MongoClient(Mongo.MONGO_URI)
 
         # Liked Songs
         if not self.id:

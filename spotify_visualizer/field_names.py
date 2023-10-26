@@ -1,3 +1,8 @@
+from os import getenv
+
+class Mongo:
+    MONGO_URI = getenv("MONGO_URI", "localhost")
+
 class Status:
     OK = 200
     CREATED = 201

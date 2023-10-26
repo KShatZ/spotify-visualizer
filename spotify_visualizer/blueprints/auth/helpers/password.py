@@ -2,8 +2,9 @@ from bson import ObjectId
 from pymongo import MongoClient
 from werkzeug.security import check_password_hash
 
+from spotify_visualizer.field_names import Mongo
 
-mongo = MongoClient()
+mongo = MongoClient(host=Mongo.MONGO_URI)
 USERS_COLLECTION = mongo["spotify-visualizer"]["users"]
 
 def authenticate_password_hash(username, pwd):

@@ -1,15 +1,14 @@
-import os
-
 from bson import ObjectId
-from dotenv import load_dotenv
 from pymongo import MongoClient
 import requests
+# from dotenv import load_dotenv
+# load_dotenv()
 
 from spotify_visualizer.blueprints.spotify.helpers.spotify import get_spotify_user_info
+from spotify_visualizer.field_names import Mongo
 
-load_dotenv()
 
-mongo = MongoClient()
+mongo = MongoClient(Mongo.MONGO_URI)
 USERS_COLLECTION = mongo["spotify-visualizer"]["users"]
 
 
@@ -79,8 +78,8 @@ def refresh_access_token(user_id):
     body = {
         "grant_type": "refresh_token",
         "refresh_token": spotify_doc["spotify"]["refresh"],
-        "client_id": os.getenv("SPOTIFY_CLIENT_ID"),
-        "client_secret": os.getenv("SPOTIFY_CLIENT_SECRET"),
+        "client_id": getenv("SPOTIFY_CLIENT_ID"),
+        "client_secret": getenv("SPOTIFY_CLIENT_SECRET"),
     }
 
     r = requests.post(endpoint, headers=headers, params=body)

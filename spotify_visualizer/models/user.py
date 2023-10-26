@@ -104,3 +104,32 @@ class User(UserMixin):
         total_count = data["artists"].get("total", "N/A")
 
         return total_count
+    
+
+    def get_profile_image(self):
+        """Gets the largest user profile image url that exists.
+        Spotify rotates url's for the profile image so need to utilze
+        a getter to prevent a missing profile image.
+
+        :return: The spotify url to the users profile image
+        :rtype: str
+        """
+
+        profile_images = self.spotify.get("images")
+
+        largest_size = 0
+        index = None
+
+        try:
+            for i, image in enumerate(profile_images):
+                image_size = image.get("height", 0)
+
+                if image_size > largest_size:
+                    largest_size = image_size
+                    index = i
+
+            return profile_images[index].get("url")
+        
+        except:
+            return None
+        

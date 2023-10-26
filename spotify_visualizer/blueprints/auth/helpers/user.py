@@ -1,8 +1,9 @@
 from bson import ObjectId
 from pymongo import MongoClient
 
+from spotify_visualizer.field_names import Mongo
 
-mongo = MongoClient()
+mongo = MongoClient(host=Mongo.MONGO_URI)
 USERS_COLLECTION = mongo["spotify-visualizer"]["users"] # TODO: env vars
 
 

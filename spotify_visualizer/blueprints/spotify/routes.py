@@ -1,6 +1,5 @@
 import os
 
-from dotenv import load_dotenv
 from flask import request, redirect
 from flask_login import current_user
 import requests
@@ -9,7 +8,8 @@ from urllib.parse import urlencode
 from spotify_visualizer.blueprints.spotify import SpotifyBlueprint
 from spotify_visualizer.blueprints.spotify.helpers.user import populate_user_spotify_object
 
-load_dotenv()
+# from dotenv import load_dotenv
+# load_dotenv()
 
 
 @SpotifyBlueprint.get("/spotify/auth")

@@ -1,10 +1,11 @@
-from dotenv import load_dotenv
 from pymongo import MongoClient
 import requests
+# from dotenv import load_dotenv
+# load_dotenv()
 
-load_dotenv()
+from spotify_visualizer.field_names import Mongo
 
-mongo = MongoClient()
+mongo = MongoClient(host=Mongo.MONGO_URI)
 USERS_COLLECTION = mongo["spotify-visualizer"]["users"]
 
 
