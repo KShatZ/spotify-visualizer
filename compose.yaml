@@ -5,6 +5,8 @@ services:
     ports:
       - "127.0.0.1:27017:27017"
     restart: "always"
+    volumes:
+      - ./docker/mongo:/data/db # Persist data in development
 
   visualizer:
     container_name: "app"
@@ -14,9 +16,11 @@ services:
     ports:
       - "127.0.0.1:5000:5000"
     environment:
-      - MONGO_URI=mongodb://mongo:27017 
+      - MONGO_URI 
 
       - SPOTIFY_CLIENT_ID
       - SPOTIFY_CLIENT_SECRET
       - SPOTIFY_REDIRECT_URI
 
+    volumes:
+      - ./:/app # Sync code changes in development

@@ -1,3 +1,6 @@
+# Mongo
+export MONGO_URI=mongodb://mongo:27017
+
 # SPOTIFY oAuth
 export SPOTIFY_CLIENT_ID="Your Spotify App Client ID"
 export SPOTIFY_CLIENT_SECRET="Your Spotify App Client Secret"
