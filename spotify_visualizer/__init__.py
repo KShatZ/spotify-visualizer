@@ -1,3 +1,5 @@
+from os import getenv
+
 from flask import Flask
 from flask_login import LoginManager
 
@@ -19,7 +21,7 @@ def init_app():
         login_manager.init_app(app)
 
         # ------ Config ------ #
-        app.config["SECRET_KEY"] = "someSecretKey" # TODO: Proper
+        app.config["SECRET_KEY"] = getenv("FLASK_SECRET_KEY", "someSecretKey")
 
         # ------ Blueprints ------ #
         from .blueprints.index import IndexBlueprint

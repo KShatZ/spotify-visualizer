@@ -1,6 +1,11 @@
+from os import getenv
+
 from spotify_visualizer import init_app
+
+
+DEBUG = getenv("DEBUG", False)
 
 app = init_app()
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', debug=True)
+    app.run(host='0.0.0.0', debug=DEBUG)
