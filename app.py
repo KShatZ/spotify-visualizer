@@ -3,7 +3,7 @@ from os import getenv
 from spotify_visualizer import init_app
 
 
-DEBUG = getenv("DEBUG", False)
+DEBUG = getenv("DEBUG", None)
 
 app = init_app()
 
