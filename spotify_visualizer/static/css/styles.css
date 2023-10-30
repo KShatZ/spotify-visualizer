@@ -263,7 +263,7 @@ li {
     font-size: 13px;
     font-weight: 100;
     opacity: .5;
-    padding-bottom: 10px;
+    padding-bottom: 25px;
 }
 
 #dev-by a {
@@ -526,7 +526,7 @@ li {
 #playlist-tracks {
     display: flex;
     flex-direction: column;
-    max-height: 82vh;
+    max-height: 81vh;
     overflow-y: auto;
     overflow-x: hidden;
     padding-top: 10px;
