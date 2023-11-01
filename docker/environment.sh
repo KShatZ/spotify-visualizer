@@ -1,4 +1,10 @@
-# Mongo
+#! /usr/bin/bash
+
+# ------ Flask Configuration ------ #
+export FLASK_SECRET_KEY="someSecretKey"
+# export FLASK_PRODUCTION=True
+
+# ------ Mongo ------ #
 export MONGO_URI=mongodb://mongo:27017
 
 # SPOTIFY oAuth
