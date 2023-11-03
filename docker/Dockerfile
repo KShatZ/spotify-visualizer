@@ -1,11 +1,16 @@
-FROM python:3-alpine
+FROM python:3.9.18-slim
+
+# Prod & Dev Ports (Respectively)
+EXPOSE 8000
+EXPOSE 5000
+
+SHELL ["/bin/bash", "-c"]
 
 WORKDIR /app
 
-COPY requirements.txt ./
+COPY requirements.txt .
 RUN pip install -r requirements.txt
 
-COPY ./ ./
+COPY . .
 
-CMD ["python3", "app.py"]
-# ENTRYPOINT ["tail", "-f", "/dev/null"] # -- Keep container running
+CMD source /app/start.sh

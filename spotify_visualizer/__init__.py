@@ -15,7 +15,7 @@ def init_app():
     :rtype: Flask App Instance
     """
     
-    PRODUCTION = getenv("FLASK_PRODUCTION", False)
+    APP_MODE = getenv("FLASK_APP_MODE", "PROD")
     app = Flask("__name__", template_folder="spotify_visualizer/templates", static_folder="spotify_visualizer/static")
 
     with app.app_context():
@@ -26,12 +26,11 @@ def init_app():
         app.config["SECRET_KEY"] = getenv("FLASK_SECRET_KEY", "someSecretKey")
 
         # ------ Middleware ------ #
-        if PRODUCTION:
+        if APP_MODE == "PROD":
             # Behind Proxy - Sets how many headers to expect
             app.wsgi_app = ProxyFix(
                 app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_prefix=1
             )
-
 
         # ------ Blueprints ------ #
         from .blueprints.index import IndexBlueprint

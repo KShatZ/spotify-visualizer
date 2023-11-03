@@ -2,7 +2,7 @@
 
 # ------ Flask Configuration ------ #
 export FLASK_SECRET_KEY="someSecretKey"
-# export FLASK_PRODUCTION=True
+export FLASK_APP_MODE=" PROD || DEV "
 
 # ------ Mongo ------ #
 export MONGO_URI=mongodb://mongo:27017

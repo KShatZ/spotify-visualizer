@@ -14,10 +14,12 @@ services:
       context: "./"
       dockerfile: "docker/Dockerfile"
     ports:
-      - "127.0.0.1:5000:5000"
+      - "127.0.0.1:8000:8000" # Prod
+      # - "127.0.0.1:5000:5000" # Dev
     environment:
       # - DEBUG=True  # Uncomment for debug on
-      # - PRODUCTION=True
+      - FLASK_SECRET_KEY
+      - FLASK_APP_MODE
       - MONGO_URI 
       - SPOTIFY_CLIENT_ID
       - SPOTIFY_CLIENT_SECRET
