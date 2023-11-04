@@ -1,4 +1,4 @@
-#! /usr/bin/bash
+#!/bin/bash
 
 # ------ Flask Configuration ------ #
 export FLASK_SECRET_KEY="someSecretKey"
