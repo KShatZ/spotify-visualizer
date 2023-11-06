@@ -4,6 +4,8 @@
 
 <div align="center">
     <a href="#demo-the-mvp">Demo the MVP</a>
+    <br>
+    <br>
 </div>
 
 ## Project Description:
