@@ -37,9 +37,6 @@ At the moment, the mongo database that is being used is hosted with Mongo Atlas.
 ## Run Project Locally
 
 ### Environment Variables:
-Regardless, on whether you choose to run the app [Bare Metal](#bare-metal:) or with [Docker](#docker:) you will need to set the values of some environment variables in the *environment.sh* script file found in the docker directory which is located at the root of the project.
-
-<br>
 <p align="center">docker/environment.sh</p>
 
 ```
@@ -58,10 +55,16 @@ export SPOTIFY_CLIENT_SECRET="Your Spotify App Client Secret"
 export SPOTIFY_REDIRECT_URI="URL To Redirect After Spotify oAUTH"
 ```
 
+Regardless, on whether you choose to run the app [Bare Metal](#bare-metal:) or with [Docker](#docker:) you will need to set the values of some environment variables in the *environment.sh* script file found in the docker directory.
+
 **FLASK_SECRET_KEY**
+
+This is a flask configuration option which is required to succesfully sign cookies for session management. You can set this to whatever you like for development purposes but in production flask says "it should be a long random bytes or str".
+
 
 **FLASK_APP_MODE**
 
+App mode is a flag that is used to switch the flask application between development and production modes. The possible values are either `PROD` or `DEV`
 **MONGO_URI**
 
 **SPOTIFY_CLIENT_ID**
