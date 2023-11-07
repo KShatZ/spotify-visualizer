@@ -37,25 +37,6 @@ At the moment, the mongo database that is being used is hosted with Mongo Atlas.
 ## Run Project Locally
 
 ### Environment Variables:
-<p align="center">docker/environment.sh</p>
-
-```
-#!/bin/bash
-
-# ------ Flask Configuration ------ #
-export FLASK_SECRET_KEY="someSecretKey"
-export FLASK_APP_MODE=" PROD || DEV "
-
-# ------ Mongo ------ #
-export MONGO_URI=mongodb://mongo:27017
-
-# SPOTIFY oAuth
-export SPOTIFY_CLIENT_ID="Your Spotify App Client ID"
-export SPOTIFY_CLIENT_SECRET="Your Spotify App Client Secret"
-export SPOTIFY_REDIRECT_URI="URL To Redirect After Spotify oAUTH"
-```
-
-<br>
 
 Regardless, on whether you choose to run the app [Bare Metal](#bare-metal:) or with [Docker](#docker:) you will need to set the values of some environment variables in the *environment.sh* script file found in the docker directory.
 
@@ -80,6 +61,34 @@ Regardless, on whether you choose to run the app [Bare Metal](#bare-metal:) or w
 **$SPOTIFY_REDIRECT_URI**
 
 >The value of this variable is used in spotify authentication, for when the user first allows *Spotify Visualizer* to have access to their Spotify account through oAuth. Once the user accepts, they are then redirected to the url that is the value of this environment variable. The value should be a url to your application, wherever it is that you want to redirect the user too. You must also let the application know to expect this url, within the app's settings in the spotify developer console.Check out the <a href="https://developer.spotify.com/documentation/web-api/tutorials/code-flow#:~:text=to%20code.-,redirect_uri,-Required">Spotify Api Docs</a> for more deatailed information.
+
+**$MONGO_URI**
+
+>The mongo uri of the mongo instance you are using.
+
+<br>
+
+<p align="center">docker/environment.sh</p>
+
+```
+#!/bin/bash
+
+# ------ Flask Configuration ------ #
+export FLASK_SECRET_KEY="someSecretKey"
+export FLASK_APP_MODE=" PROD || DEV "
+
+# ------ Mongo ------ #
+export MONGO_URI=mongodb://mongo:27017
+
+# SPOTIFY oAuth
+export SPOTIFY_CLIENT_ID="Your Spotify App Client ID"
+export SPOTIFY_CLIENT_SECRET="Your Spotify App Client Secret"
+export SPOTIFY_REDIRECT_URI="URL To Redirect After Spotify oAUTH"
+```
+
+<p align="center">Make sure to source this file with the correct values regardless of which method of running below you will be using.</p>
+
+<br>
 
 <br>
 
