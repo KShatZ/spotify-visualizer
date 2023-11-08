@@ -127,4 +127,6 @@ I have created a test account for people to play around with and the credentials
     <a href="https://spotify.cierio.com">Spotify Visualizer App</a>
 </div>
 
+<br>
+
 If you would like to be able to check out the app with your spotify account you may reach out to me at kirillshats@gmail.com 
