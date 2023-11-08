@@ -9,6 +9,13 @@
 
 
 ## Project Description
+This project is in its early stages of development so the current state is no where near the final vision of the project. However, the main idea is to allow the user to be able to visualize data about their playlists in order to gain some cool insights about their listening
+history as well as individual tracks that they have saved.
+
+At the current moment, the application allows the user to see all the tracks in their playlists and see the Beats Per Minute (BPM) and
+Key of track. The next steps are to allow the user to see other information regarding to the track, filter based on this different information,
+create/edit playlists based on certain data, and much more!
+
 
 <br>
 <br>
@@ -32,7 +39,7 @@ In production, the application is containerized and run by a **Gunicorn** server
 <br>
 <br>
 
-## Run Project Locally
+## How to Run Project Locally
 
 ### Environment Variables:
 
@@ -113,6 +120,8 @@ To make development easier the current compose set up persists data with two vol
 project directory allowing you to develop and not have to restart your containers on each new update. The other is 
 mounted to `/docker/mongo ` in order to persit user data across new container spin ups.
 
+<br>
+<br>
 
 ## Demo the MVP
 
