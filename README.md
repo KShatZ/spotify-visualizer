@@ -123,6 +123,6 @@ I have created a test account for people to play around with and the credentials
 - Username:
 - Password:
 
-<a align="cetner" href="https://spotify.cierio.com">Spotify Visualizer App</a>
+<a align="center" href="https://spotify.cierio.com">Spotify Visualizer App</a>
 
-If you would like to be able to check out the app with your spotify account you can reach out to me at kirillshats@gmail.com 
+If you would like to be able to check out the app with your spotify account you may reach out to me at kirillshats@gmail.com 
