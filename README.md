@@ -122,6 +122,8 @@ accounts with my app.
 <div align="center">
     <a href="https://spotify.cierio.com">Spotify Visualizer App</a>
 </div>
+<br>
+
 I have created a test account for people to play around with and the credentials are below.
 - Username:
 - Password:
