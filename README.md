@@ -28,7 +28,7 @@ create/edit playlists based on certain data, and much more!
 <div align="center">
     <p>Use these credentials</p>
     <strong>Username</strong>: testAccount | <strong>Password</strong>: a#4,me[s
-    <em>App is not fully responsive yet, please use mobile version.</em>
+    <p><em>App is not fully responsive yet, please use mobile version.</em></p>
 </div>
 
 <br>
