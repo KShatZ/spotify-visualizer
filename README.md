@@ -116,3 +116,13 @@ mounted to `/docker/mongo ` in order to persit user data across new container sp
 
 ## Demo the MVP
 
+This application is still in it's very early stages of development but a small portion of the app, an MVP is live at the moment. Due to the current stage of the application, there is a whitelist implemented by Spotify limiting the number of users that can authenticate their Spotify
+accounts with my app.
+
+I have created a test account for people to play around with and the credentials are below.
+- Username:
+- Password:
+
+<a align="cetner" href="https://spotify.cierio.com">Spotify Visualizer App</a>
+
+If you would like to be able to check out the app with your spotify account you can reach out to me at kirillshats@gmail.com 
