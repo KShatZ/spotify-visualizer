@@ -28,9 +28,7 @@ At the current moment, in order to allow for faster development and pivotting **
 <br>
 
 ### Production Infrastructure:
-In production, the application is containerized and run by a **Gunicorn** server which sits behind an **Nginx** proxy server. 
-
-At the moment, the mongo database that is being used is hosted with Mongo Atlas.
+In production, the application is containerized and run by a **Gunicorn** server which sits behind an **Nginx** proxy server. At the moment, the mongo database that is being used is hosted with Mongo Atlas.
 <br>
 <br>
 
@@ -89,13 +87,35 @@ Regardless, on whether you choose to run the app [Bare Metal](#bare-metal:) or w
 <br>
 
 ### Bare Metal:
+
+Running `python3 app.py` from the root directory of the project will start up the development flask server, on `localhost:5000`
+
+In order to successfully start up the flask application server make sure that you:
+- Ensure that your mongo server whether local or remote is running
+- Ensure that you have the appropriate values set for the required <a href="#environment-variables">environment variables</a>
+- Install the required packages by running `pip install -r requirements.txt`
+- Make sure nothing else is running on port 5000
+
 <br>
 
 ### Docker:
-<br>
 
+Running the compose file as is will stand up two containers:
+1. MongoDB Server accessible at 127.0.0.01:27017
+2. Spotify Visualizer App at 127.0.0.01:8000
 
-<br>
+Make sure to build an image of the flask application with `docker compose build` and then run `docker compose up -d` to
+spin up the containers. Make sure that you have set the appropriate values for the required environment variables prior
+to spinning up the container.
+
+When running with `$FLASK_APP_MODE=DEV` you will need to exec into the app container and run `python3 app.py` to start
+up the dev server. You can edit this in the `start.sh` startup script and automatically start the server upon container 
+creation.
+
+To make development easier the current compose set up persists data with two volumes one mounted to the root of the 
+project directory allowing you to develop and not have to restart your containers on each new update. The other is 
+mounted to */docker/mongo* in order to persit user data across new container spin ups.
+
 <br>
 
 ## Demo the MVP
