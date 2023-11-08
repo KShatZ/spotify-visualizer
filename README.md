@@ -123,7 +123,9 @@ mounted to `/docker/mongo ` in order to persit user data across new container sp
 
 <div align="center">
     <p>Use these credentials</p>
-    Username: testAccount Password: a#4,me(s
+    Username: testAccount | Password: a#4,me[s
 </div>
+
+<br>
 
 If you would like to be able to check out the app with your spotify account you may reach out to me at kirillshats@gmail.com. Due to the very early stages of development there is currently a whitelist restriction implemented by Spotify. It limits the number of users that can authenticate their Spotify accounts with my app. 
