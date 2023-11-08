@@ -15,8 +15,6 @@ history as well as individual tracks that they have saved.
 At the current moment, the application allows the user to see all the tracks in their playlists and see the Beats Per Minute (BPM) and
 Key of track. The next steps are to allow the user to see other information regarding to the track, filter based on this different information,
 create/edit playlists based on certain data, and much more!
-
-
 <br>
 <br>
 
