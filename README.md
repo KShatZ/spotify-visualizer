@@ -18,6 +18,24 @@ create/edit playlists based on certain data, and much more!
 <br>
 <br>
 
+## Demo the MVP
+
+<div align="center">
+    <a href="https://spotify.cierio.com">Spotify Visualizer App</a>
+</div>
+<br>
+
+<div align="center">
+    <p>Use these credentials</p>
+    Username: testAccount | Password: a#4,me[s
+</div>
+
+<br>
+
+If you would like to be able to check out the app with your spotify account you may reach out to me at kirillshats@gmail.com. Due to the very early stages of development there is currently a whitelist restriction implemented by Spotify. It limits the number of users that can authenticate their Spotify accounts with my app.
+<br>
+<br>
+
 ## Tech Used
 
 ### Front End:
@@ -117,22 +135,3 @@ creation.
 To make development easier the current compose set up persists data with two volumes one mounted to the root of the 
 project directory allowing you to develop and not have to restart your containers on each new update. The other is 
 mounted to `/docker/mongo ` in order to persit user data across new container spin ups.
-
-<br>
-<br>
-
-## Demo the MVP
-
-<div align="center">
-    <a href="https://spotify.cierio.com">Spotify Visualizer App</a>
-</div>
-<br>
-
-<div align="center">
-    <p>Use these credentials</p>
-    Username: testAccount | Password: a#4,me[s
-</div>
-
-<br>
-
-If you would like to be able to check out the app with your spotify account you may reach out to me at kirillshats@gmail.com. Due to the very early stages of development there is currently a whitelist restriction implemented by Spotify. It limits the number of users that can authenticate their Spotify accounts with my app. 
