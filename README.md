@@ -21,6 +21,7 @@ create/edit playlists based on certain data, and much more!
 ## Demo the MVP
 
 <div align="center">
+    <p><em>App is not fully responsive yet, please use mobile version.</em></p>
     <a href="https://spotify.cierio.com">Spotify Visualizer App</a>
 </div>
 <br>
@@ -28,7 +29,6 @@ create/edit playlists based on certain data, and much more!
 <div align="center">
     <p>Use these credentials</p>
     <strong>Username</strong>: testAccount | <strong>Password</strong>: a#4,me[s
-    <p><em>App is not fully responsive yet, please use mobile version.</em></p>
 </div>
 
 <br>
