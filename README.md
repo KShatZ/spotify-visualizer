@@ -129,10 +129,9 @@ Running the compose file as is will stand up two containers:
 Make sure to build an image of the flask application with `docker compose build` and then run `docker compose up -d` to
 spin up the containers. Make sure that you have set the appropriate values for the required <a href="#environment-variables">environment variables</a> prior to spinning up the container.
 
-When running with `$FLASK_APP_MODE=DEV` you will need to exec into the app container and run `python3 app.py` to start
-up the dev server. You can edit this in the `start.sh` startup script and automatically start the server upon container 
+When running with `$FLASK_APP_MODE=DEV` you will need to exec into the app container `exec -it app bash` and run `python3 app.py` once inside to start up the dev server. You can edit this in the `start.sh` startup script and automatically start the server upon container 
 creation.
 
-To make development easier the current compose set up persists data with two volumes one mounted to the root of the 
+To make development easier the current docker compose setup persists data with two volumes. One is mounted to the root of the 
 project directory allowing you to develop and not have to restart your containers on each new update. The other is 
-mounted to `/docker/mongo ` in order to persit user data across new container spin ups.
+mounted to `/docker/mongo` in order to persit user data across new container spin ups.
