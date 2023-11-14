@@ -28,7 +28,7 @@ create/edit playlists based on certain data, and much more!
 
 <div align="center">
     <p>Use these credentials</p>
-    <strong>Username</strong>: testAccount | <strong>Password</strong>: a#4,me[s
+    <strong>Username</strong>: bgilfoyle | <strong>Password</strong>: D1i2N!eS_H
 </div>
 
 <br>
