@@ -241,6 +241,10 @@ li {
     width: 50%;
 }
 
+.auth-form button:focus {
+    border-color: rgba(30,215,96,1);
+}
+
 #auth-redirect {
     align-items: center;
     display: flex;
@@ -253,6 +257,10 @@ li {
 
 #auth-redirect a {
     text-decoration: underline;
+}
+
+#auth-redirect a:hover:focus {
+    color: rgba(30,215,96,1);
 }
 
 #dev-by {
