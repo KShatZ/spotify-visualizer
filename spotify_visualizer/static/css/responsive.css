@@ -1,0 +1,20 @@
+/* ------ LOGIN/REGISTER ------ */
+@media screen and (min-width: 550px) {
+    #auth-header hr {
+        width: 80%;
+    }
+
+    .auth-form {
+        width: 60%;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .auth-form {
+        width: 437px;
+    }
+    
+    #auth-header hr {
+        width: 575px;
+    }
+}
