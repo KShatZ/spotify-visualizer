@@ -9,12 +9,13 @@
 
 
 ## Project Description
-This project is in its early stages of development so the current state is no where near the final vision of the project. However, the main idea is to allow the user to be able to visualize data about their playlists in order to gain some cool insights about their listening
-history as well as individual tracks that they have saved.
+Spotify Visualizer (temporary name as apple music integration is planne as well) is in it's very early stages of development, therefore the current state is very far from the current vision of the "final" product. However, the main idea is to develop a web application who's goal is to facilitate enhanced playlist creation and generate insightful analytics on a user's music taste. The application is meant to have multiple user personas: DJ's, fitness trainers, and curious listeners.
 
-At the current moment, the application allows the user to see all the tracks in their playlists and see the Beats Per Minute (BPM) and
-Key of track. The next steps are to allow the user to see other information regarding to the track, filter based on this different information,
-create/edit playlists based on certain data, and much more!
+At the current moment, I am developing features that are mainly intended for the DJ's and fitness trainers that may need to create
+playlists with specific tracks based on tempo, key, etc... the [production version](#demo-the-mvp) allows users to see the BPM and Key (camelot notation) of each track in any of their playlists. The next features to be released will allow users to view and filter playlists and their tracks on various meta data, add/delete songs from playlists, as well as create new playlists. 
+
+Once enhanced playlist creation is finished, the idea is to utilize plotly dash in order to be able to generate very interesting 
+interactive graphs about a users listening history, playlist meta data, track data, etc...
 <br>
 <br>
 
