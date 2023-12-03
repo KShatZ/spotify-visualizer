@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard | Spotify Visualizer</title>
     <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/responsive.css')}}">
 </head>
 
 <body class="bg-color txt-color">
@@ -31,7 +32,7 @@
                     <li>Total Playlists: {{ t.playlist_count }}</li>
                 </ul>
 
-                <a id="profile-url" href="{{ t.profile_url }}" target="_blank">Open Spotify Profile</a>
+                <a id="profile-url" class="bg-color" href="{{ t.profile_url }}" target="_blank">Open Spotify Profile</a>
             </div>
         </div>
 
@@ -45,7 +46,7 @@
         <h1 id="users-display-name">{{ t.display_name }}</h1>
     </div>
    
-    <div id="your-playlists-header" class="container elevated">
+    <div id="your-playlists-header" class="bg-color container elevated">
         <div id="your-playlists-header-labels">
             <h2>Your Playlists:</h2>
             <div id="playlists-filter-view">
@@ -93,7 +94,6 @@
                     <img class="playlist-caret-svg" src="{{url_for('static', filename='svg/right.svg')}}" alt="">
                 </div>
             </a>
-
         {% endfor %}
     </div>
 

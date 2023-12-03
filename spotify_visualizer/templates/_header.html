@@ -1,17 +1,21 @@
-<nav class="container bg-color">
-    <div id="main-nav">
-           <a href="/">Spotify Visualizer</a>
-           <div id="dropdown-toggle">
-                <span>{{current_user.username}}</span>
-                <i id="dropdown-arrow" class="fa-solid fa-caret-down"></i>
-           </div>
+<nav class="bg-color">
+    <div class="container">
+        <div id="main-nav">
+            <a href="/">Spotify Visualizer</a>
+            <div>
+                <div id="dropdown-toggle">
+                    <span>{{current_user.username}}</span>
+                    <i id="dropdown-arrow" class="fa-solid fa-caret-down"></i>
+                </div>
+                <ul id="nav-dropdown" class="bg-color elevated">
+                    <li>
+                        <form action="/logout" method="POST">
+                            <button id="logout-btn">Logout</button>
+                        </form>
+                    </li>
+                    <!-- More Options Coming -->
+                </ul>
+            </div>
+        </div>
     </div>
-    <ul id="nav-dropdown" class="bg-color elevated">
-        <li>
-            <form action="/logout" method="POST">
-                <button id="logout-btn">Logout</button>
-            </form>
-        </li>        
-        <!-- More Options Coming -->
-    </ul>
 </nav>
