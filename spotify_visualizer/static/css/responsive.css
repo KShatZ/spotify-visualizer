@@ -1,0 +1,369 @@
+@media screen and (min-width: 500px) {
+    
+    /* ------------------------ */
+    /* ------ Dashboard ------- */
+    /* ------------------------ */
+    #spotify-profile-header {
+        justify-content: center;
+    }
+
+    .header-meta-container {
+        margin: 0 50px;
+    }
+
+    /* ----------------------- */
+    /* ------ Playlists ------ */
+    /* ----------------------- */
+    #playlist-header {
+        justify-content: center;
+    }
+}
+
+
+@media screen and (min-width: 550px) {
+    
+    /* ---------------------------- */
+    /* ------ LOGIN/REGISTER ------ */
+    /* ---------------------------- */
+    #auth-header hr {
+        width: 80%;
+    }
+
+    .auth-form {
+        width: 60%;
+    }
+}
+
+@media screen and (min-width: 768px) { 
+
+    /* -------------------- */
+    /* ------ Global ------ */
+    /* -------------------- */
+    nav {
+        font-size: 17px;
+    }
+    
+    .container {
+        width: 95%;
+    }
+
+    /* ---------------------- */
+    /* ------ Nav Bar ------- */
+    /* ---------------------- */
+    #dropdown-arrow {
+        font-size: 13px;
+    }
+
+    #nav-dropdown {
+        width: 95px;
+        padding: 3px;
+    }
+
+    #nav-dropdown button {
+        font-size: 14px;
+    }
+
+    /* ---------------------------- */
+    /* ------ LOGIN/REGISTER ------ */
+    /* ---------------------------- */
+    .auth-form {
+        width: 437px;
+    }
+
+    #auth-header hr {
+        width: 575px;
+    }
+
+    /* -------------------- */
+    /* ------ Header ------ */
+    /* -------------------- */
+    .header-meta-container {
+        width: 250px;
+        height: 250px;
+    }
+
+    /* ------------------------ */
+    /* ------ Dashboard ------- */
+    /* ------------------------ */
+    #users-display-name {
+        font-size: 32px;
+    }
+
+    #your-playlists-header-labels h2 {
+        font-size: 27px;
+    }
+
+    #playlists-filter-view {
+        font-size: 14px;
+    }
+
+    #toggle-playlists-filter {
+        font-size: 12px;
+    }
+
+    #playlists {
+        row-gap: 40px;
+        padding-bottom: 40px;
+    }
+
+    .playlist_album-art {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .playlist_meta h3 {
+        font-size: 22px;
+    }
+
+    .playlist_meta p {
+        font-size: 18px;
+    }
+
+    .playlist-caret-svg {
+        width: 25px;
+    }
+
+    /* ----------------------- */
+    /* ------ Playlists ------ */
+    /* ----------------------- */
+    #playlist-name {
+        font-size: 32px;
+    }
+
+    #playlist-duration {
+        font-size: 14px;
+    }
+
+    #tracks-header {
+        font-size: 27px;
+    }
+
+    #tracks-filter-view {
+        font-size: 14px;
+    }
+
+    #toggle-tracks-filter {
+        font-size: 12px;        
+    }
+
+    #playlist-tracks {
+        padding-bottom: 35px;
+        row-gap: 35px;
+    }
+
+    #playlist-total-tracks {
+        font-size: 13px;
+    }
+
+    .track_album-cover {
+        width: 70px;
+        height: 70px;
+    }
+
+    .track-meta_name {
+        font-size: 18px;
+    }
+    
+    .track-meta_artists {
+        font-size: 12px;
+    }
+
+    .track-meta_analysis {
+        font-size: 17px;
+    }
+
+}
+
+@media screen and (min-width: 1024px) {   
+
+    /* -------------------- */
+    /* ------ Global ------ */
+    /* -------------------- */
+    .container {
+        width: 90%;
+    }
+
+    /* ---------------------- */
+    /* ------ Nav Bar ------- */
+    /* ---------------------- */
+    #dropdown-arrow {
+        font-size: 14px;
+    }
+
+    #nav-dropdown {
+        width: 95px;
+        height: 40px;
+        font-size: 14px;
+        padding: 3px;
+    }
+
+    /* ------------------------ */
+    /* ------ Dashboard ------- */
+    /* ------------------------ */
+    #playlists {
+        row-gap: 45px;
+        padding-bottom: 45px;
+    }
+
+    /* ----------------------- */
+    /* ------ Playlists ------ */
+    /* ----------------------- */
+    #playlist-tracks {
+        row-gap: 45;
+        padding-bottom: 45;
+    }
+
+    .track_album-cover {
+        width: 75px;
+        height: 75px;
+    }
+
+    .track_album-cover {
+        width: 85px;
+        height: 85px;
+    }
+
+    .track-meta_name {
+        font-size: 20px;
+    }
+    
+    .track-meta_artists {
+        font-size: 13px;
+    }
+
+}
+
+@media screen and (min-width: 1280px) {
+
+    /* -------------------- */
+    /* ------ Global ------ */
+    /* -------------------- */
+    nav {
+        font-size: 18px;
+    }
+
+    .container {
+        width: 80%;
+    }
+
+    /* ---------------------- */
+    /* ------ Nav Bar ------- */
+    /* ---------------------- */
+    #nav-dropdown {
+        width: 100px;
+        padding: 3px;
+    }
+
+    #nav-dropdown button {
+        font-size: 15px;
+    }
+
+    /* -------------------- */
+    /* ------ Header ------ */
+    /* -------------------- */
+    .header-meta-container {
+        width: 275px;
+        height: 275px;
+    }
+
+    /* ------------------------ */
+    /* ------ Dashboard ------- */
+    /* ------------------------ */
+    #users-display-name {
+        font-size: 34px;
+    }
+
+    #your-playlists-header-labels h2 {
+        font-size: 28px;
+    }
+
+    #playlists-filter-view {
+        font-size: 15px;
+    }
+
+    #toggle-playlists-filter {
+        font-size: 14px;
+    }
+
+    #playlists {
+        row-gap: 55px;
+        padding-bottom: 55px;
+    }
+    
+    .playlist_album-art {
+        width: 115px;
+        height: 115px;
+    }
+    
+    .playlist_meta h3 {
+        font-size: 24px;
+    }
+
+    .playlist_meta p {
+        font-size: 20px;
+    }
+
+    .playlist-caret-svg {
+        width: 27px;
+    }
+
+    /* ----------------------- */
+    /* ------ Playlists ------ */
+    /* ----------------------- */
+    #playlist-name {
+        font-size: 34px;
+    }
+
+    #playlist-duration {
+        font-size: 16px;
+    }
+
+    #tracks-header {
+        font-size: 28px;
+    }
+
+    #tracks-filter-view {
+        font-size: 15px;
+    }
+
+    #toggle-tracks-filter {
+        font-size: 14px;        
+    }
+
+    #playlist-tracks {
+        padding-bottom: 40px;
+        row-gap: 40px;
+    }
+
+    #playlist-total-tracks {
+        padding-top: 5px;
+        font-size: 14px;
+    }
+
+    .track_album-cover {
+        width: 95px;
+        height: 95px;
+    }
+
+    .track-meta_name {
+        font-size: 21px;
+    }
+    
+    .track-meta_artists {
+        font-size: 13px;
+    }
+
+    .track-meta_analysis {
+        font-size: 19px;
+    }
+}
+
+@media screen and (min-width: 1440px) { 
+
+    /* -------------------- */
+    /* ------ Global ------ */
+    /* -------------------- */
+    .container {
+        width: 75%;
+    }
+}
