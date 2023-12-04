@@ -22,13 +22,14 @@ interactive graphs about a users listening history, playlist meta data, track da
 ## Demo the MVP
 
 <div align="center">
-    <a href="https://spotify.cierio.com">Spotify Visualizer App</a>
+    <p>Use these credentials</p>
+    <strong>Username</strong>: bgilfoyle | <strong>Password</strong>: D1i2N!eS_H
 </div>
+
 <br>
 
 <div align="center">
-    <p>Use these credentials</p>
-    <strong>Username</strong>: bgilfoyle | <strong>Password</strong>: D1i2N!eS_H
+    <a href="https://spotify.cierio.com">Spotify Visualizer App</a>
 </div>
 
 <br>
