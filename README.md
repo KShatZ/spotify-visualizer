@@ -22,7 +22,6 @@ interactive graphs about a users listening history, playlist meta data, track da
 ## Demo the MVP
 
 <div align="center">
-    <p><em>App is not fully responsive yet, please use mobile version.</em></p>
     <a href="https://spotify.cierio.com">Spotify Visualizer App</a>
 </div>
 <br>
