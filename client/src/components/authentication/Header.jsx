@@ -1,5 +1,5 @@
-import "./styles.css";
 import spotifyLogo from "../../assets/spotify_assets/icon/Spotify_Icon_RGB_Green.png"
+import "./styles.css";
 
 export default function Header() {
         

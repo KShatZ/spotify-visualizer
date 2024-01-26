@@ -18,7 +18,6 @@ export default function Form({ isLogin }) {
 
                 <button type="submit" style={ isLogin ? {}:{width:"65%"} }>{ isLogin ? "Login":"Create Account" }</button>
 
-
                 { isLogin ? 
                     <div id="auth-redirect">
                         <p>Dont have an account?</p>
