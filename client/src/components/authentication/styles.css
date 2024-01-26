@@ -1,0 +1,122 @@
+/* -------------------- */
+/* ------ Header ------ */
+/* -------------------- */
+#auth-header-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 55px;
+}
+
+#auth-app-logo {
+    margin-bottom: 15px;
+    height: 125px;
+    width: 125px;
+}
+
+#auth-header-container hr {
+    margin-top: 25px;
+    border-color: rgb(250, 249, 246, .2);
+    width: 100%;
+}
+
+/* ------------------ */
+/* ------ Form ------ */
+/* ------------------ */
+#auth-form-container {
+    display: flex;
+    justify-content: center;
+}
+
+#auth-form {
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    height: 415px; 
+    margin-top: 30px;
+    padding: 20px;
+    width: 80%;
+}
+
+#auth-form h1 {
+    margin-bottom: 25px;
+}
+
+#auth-form-inputs {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
+#auth-input-group {
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+}
+
+#auth-input-group input {
+    border-radius: 3px;
+    height: 35px;
+    padding-left: 10px;
+}
+
+#auth-input-group input:focus {
+    border-color: rgba(30,215,96,1);
+    box-shadow: 0 0 5px rgba(30,215,96,.3);
+}
+
+#auth-form button {
+    align-self: center;
+    padding: 10px;
+    margin-top: 35px;
+    margin-bottom: 15px;
+    width: 50%;
+}
+
+#auth-form button:focus {
+    border-color: rgba(30,215,96,1);
+}
+
+#auth-redirect {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: 12px;
+    font-weight: 100px;
+    margin-top: 22px;
+}
+
+#auth-redirect a {
+    text-decoration: underline;
+}
+
+#auth-redirect a:hover:focus {
+    color: rgba(30,215,96,1);
+}
+
+/* ------------------------ */
+/* ------ Responsive ------ */
+/* ------------------------ */
+@media screen and (min-width: 550px) {
+    
+    #auth-form {
+        width: 60%;
+    }
+
+    #auth-header-container hr {
+        width: 80%;
+    }
+}
+
+@media screen and (min-width: 768px) { 
+
+    #auth-form {
+        width: 437px;
+    }
+
+    #auth-header-container hr {
+        width: 575px;
+    }
+}
