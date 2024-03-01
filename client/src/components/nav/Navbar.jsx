@@ -47,7 +47,7 @@ export default function Navbar() {
         <nav>
             <div id="navbar-container" className="bg-color">
                 <div id="navbar" className="container">
-                    <a href="/">Spotify Visualizer</a>   { /* Todo: Nav Component */ }
+                    <a href="/">Spotify Visualizer</a>   { /* Todo: Nav Component -- < Playlist / Song Name */ }
                     <DropdownToggle 
                         user="kshats" 
                         onClick={ handleToggleClick }
