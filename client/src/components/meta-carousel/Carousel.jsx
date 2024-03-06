@@ -3,7 +3,7 @@ import { useState, useRef, useEffect, cloneElement } from "react";
 import CarouselArrowSVG from "./CarouselArrowSVG";
 
 
-export default function HeaderCarousel({ items }) {
+export default function Carousel({ items }) {
     
     const [ index, setIndex ] = useState(0);
     const [ rightOn, setRightOn ] = useState(true);

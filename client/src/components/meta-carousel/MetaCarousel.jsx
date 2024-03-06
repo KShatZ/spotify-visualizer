@@ -1,11 +1,11 @@
-import HeaderCarousel from "./HeaderCarousel";
+import Carousel from "./Carousel";
 import SpotifyProfileImg from "./SpotifyProfileImg";
 import SpotifyProfileMeta from "./SpotifyProfileMeta";
 
 import "./styles.css";
 
 
-export default function Header({ titleContent, duration }) {
+export default function MetaCarousel({ titleContent, duration }) {
     
     const carouselItems = [
         <SpotifyProfileImg key="spotify-profile-image" />,
@@ -14,7 +14,7 @@ export default function Header({ titleContent, duration }) {
 
     return (
         <>
-            <HeaderCarousel items={ carouselItems } />
+            <Carousel items={ carouselItems } />
 
             <div style={{textAlign: "center"}} className="container">
                 <h1 id="header-title">{ titleContent }</h1>
