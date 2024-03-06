@@ -60,7 +60,7 @@
     transition: color ease .3s;
 }
 
-#header-title {
+#meta-title {
     font-size: 30px;
 }
 
@@ -92,7 +92,7 @@
         height: 250px;
     }
 
-    #header-title {
+    #meta-title {
         font-size: 32px;
     }
     #playlist-duration {
@@ -110,7 +110,7 @@
         height: 275px;
     }
 
-    #header-title {
+    #meta-title {
         font-size: 34px;
     }
 

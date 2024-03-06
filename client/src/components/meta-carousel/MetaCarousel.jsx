@@ -17,7 +17,7 @@ export default function MetaCarousel({ titleContent, duration }) {
             <Carousel items={ carouselItems } />
 
             <div style={{textAlign: "center"}} className="container">
-                <h1 id="header-title">{ titleContent }</h1>
+                <h1 id="meta-title">{ titleContent }</h1>
 
                 { duration && <p id="playlist-duration">{ duration }</p> }
             </div>
