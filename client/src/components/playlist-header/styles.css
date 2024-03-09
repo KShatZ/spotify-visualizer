@@ -1,0 +1,31 @@
+#sort-view-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 2px;
+    font-size: 13px;
+    opacity: .8;
+    margin-top: 11px;
+
+}
+
+#playlist-sort-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 13px;
+    width: 13px;
+}
+
+.sort-icon-svg {
+    height: 100%;
+    width: 100%;
+}
+
+#sort-toggle-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 0;
+    opacity: 50%;
+}

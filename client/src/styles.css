@@ -90,6 +90,27 @@ legend {
     width: 100%;
 }
 
+.header-container {
+    margin: -15px 0;
+    padding-top: 30px;
+    z-index: 50;
+}
+
+.header-container hr {
+    margin-top: 3px;
+    opacity: .5;
+}
+
+.header-title-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-title-container h2 {
+    font-size: 25px;
+}
+
 /* ------------------------ */
 /* ------ Responsive ------ */
 /* ------------------------ */
