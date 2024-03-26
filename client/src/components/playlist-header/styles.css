@@ -29,3 +29,41 @@
     padding: 6px 0;
     opacity: 50%;
 }
+
+
+/* ------------------------ */
+/* ------ Responsive ------ */
+/* ------------------------ */
+@media screen and (min-width: 768px) {
+
+    #sort-view-container {
+        font-size: 14px;
+    }
+    
+    #playlist-sort-icon {
+        height: 14px;
+        width: 14px;
+    }
+
+    #sort-toggle-container svg {
+        height: 19px;
+        width: 19px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    
+    #sort-view-container {
+        font-size: 15px;
+    }
+    
+    #playlist-sort-icon {
+        height: 15px;
+        width: 15px;
+    }
+
+    #sort-toggle-container svg {
+        height: 20px;
+        width: 20px;
+    }
+}
