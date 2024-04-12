@@ -39,6 +39,10 @@
     width: 80%;
 }
 
+.form-message {
+    height: 485px !important;
+}
+
 #auth-form-inputs {
     margin-top: 25px;
     display: flex;
@@ -63,6 +67,15 @@
     color: rgba(250, 249, 246, .85);
     border-color: rgba(30,215,96,1);
     box-shadow: 0 0 5px rgba(30,215,96,.3);
+}
+
+#auth-form-msg {
+    align-self: center;
+    font-size: 13px;
+    font-weight: 500;
+    margin-top: 25px;
+    margin-bottom: -15px;
+    text-align: center;
 }
 
 #auth-form button {
@@ -107,6 +120,10 @@
     
     #auth-form {
         height: 500px;
+    }
+
+    .form-message {
+        height: 525px !important;
     }
 
     #auth-form-inputs {
