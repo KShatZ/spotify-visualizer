@@ -21,7 +21,7 @@ export default function Form({ isLogin }) {
         if (isLogin && location.state) {
             if (location.state.userCreated) {
                 /** After succesful account creation user is redirected to login
-                 * page. Need to show success message and prompt login.
+                 * page with success message.
                  */
                 if (!formMessage) {
                     setFormMessage({
