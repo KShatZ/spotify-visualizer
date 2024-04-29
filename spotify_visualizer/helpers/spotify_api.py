@@ -79,7 +79,7 @@ class SpotifyRequest():
                 print(f"Params: {self.params}")
                 print(f"Headers: {self.headers}")
             
-            r = requests.request(self.method, self.url, params=self.params, headers=self.headers)
+            r = requests.request(self.method, self.url, params=self.params, headers=self.headers, timeout=60)
 
             if self.debug:
                 print("Response Status Code:", r.status_code)

@@ -84,7 +84,7 @@ def refresh_access_token(user_id):
         "client_secret": getenv("SPOTIFY_CLIENT_SECRET"),
     }
 
-    r = requests.post(endpoint, headers=headers, params=body)
+    r = requests.post(endpoint, headers=headers, params=body, timeout=60)
     response_data = r.json()
 
     access_token = response_data["access_token"]
