@@ -21,7 +21,9 @@ export default function Form({ isLogin }) {
         if (isLogin && location.state) {
             if (location.state.userCreated) {
                 /** After succesful account creation user is redirected to login
-                 * page with success message.
+                 * page with success message. userCreated is added to the state object
+                 * in order to determine whether or not to display a success message on
+                 * login render. 
                  */
                 if (!formMessage) {
                     setFormMessage({
@@ -70,23 +72,50 @@ export default function Form({ isLogin }) {
 
         // Todo: Create own request interface
         try {
-            const response = await fetch(`http://127.0.0.1:5000/${endpoint}`, {
+            const response = await fetch(`/api/${endpoint}`, {
                 method: "POST",
                 body: JSON.stringify(userCredentials),
                 headers: {
                     "Content-Type": "application/json"
-                }
+                },
+                credentials: "include",
             });
 
             const body = await response.json();
 
             if (endpoint == "login") { 
                 // TODO
+                switch(response.status) {
+
+                    case 200:
+                        // Redirect to dashboard
+                        navigate("/")
+                        break;
+
+                    
+                    // User provided invalid credentials
+                    case 400:
+                        setFormMessage({
+                            error: true,
+                            msg: body.error.msg
+                        });
+                        break;
+
+                    // Some server error
+                    case 500:
+                        setFormMessage({
+                            error: true,
+                            msg: body.error.msg
+                        });  
+                        break;
+                    default:
+                        break;
+                }
             } else {
                 switch(response.status) {
 
                     // User created succesfully
-                    case 201: 
+                    case 201:      
                         navigate("/login", {
                             state: {
                                 userCreated: true
