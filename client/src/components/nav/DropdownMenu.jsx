@@ -1,4 +1,5 @@
 import { forwardRef } from "react";
+import { Link } from "react-router-dom";
 
 import "./styles.css";
 
@@ -14,7 +15,7 @@ const DropdownMenu = forwardRef(({ isVisible }, ref) => {
             <ul id="nav-dropdown-menu" ref={ ref }>
                 {/* Todo: Links */}
                 <li>Account</li> 
-                <li>Logout</li>
+                <li><Link to={ "/logout" }>Logout</Link></li>
             </ul>
         </div>
     )
