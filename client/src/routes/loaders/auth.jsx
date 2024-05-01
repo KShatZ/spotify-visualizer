@@ -1,6 +1,6 @@
 import { redirect } from "react-router-dom";
 
-import HTTP from "../../field_names";
+import { HTTP } from "../../field_names";
 
 
 /** 
@@ -21,17 +21,16 @@ export async function authLoader() {
 
   // Request was not authenticated
   if (status != HTTP.OK && status != HTTP.SEE_OTHER) {
-    return false;
+    return null;
   } 
   // Request is authenticated
   else {
+    const body = await response.json();
     // User does not have Spotify authorized, redirect to Spotify oAuth page
     if (status == HTTP.SEE_OTHER) {
-      const body = await response.json();
       return redirect(body.data.redirect_uri);
     } 
-
-    return true;
+    return body.data;
   }
 }
 

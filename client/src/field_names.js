@@ -1,4 +1,10 @@
-const HTTP = {
+import { createContext } from "react";
+
+// ------ React Contexts ------ //
+export const CurrentUser = createContext();
+
+// ----- Server Requests ----- //
+export const HTTP = {
     OK: "200",
     CREATED: "201",
 
@@ -10,5 +16,3 @@ const HTTP = {
 
     SERVER_ERROR: "500"
 }
-
-export default HTTP;
