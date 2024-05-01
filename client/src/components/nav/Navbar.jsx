@@ -1,11 +1,13 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useContext } from "react";
 
+import { CurrentUser } from "../../field_names";
 import DropdownMenu from "./DropdownMenu";
 import DropdownToggle from "./DropdownToggle";
 import "./styles.css";
 
 export default function Navbar() {
 
+    const currentUser = useContext(CurrentUser);
     // Depending on re-render cost in the future (nav component), this might need to be a ref.
     const [ isVisible, setIsVisible ] = useState(false);
     const menuElement = useRef(null);
@@ -49,13 +51,13 @@ export default function Navbar() {
                 <div id="navbar" className="container">
                     <a href="/">Spotify Visualizer</a>   { /* Todo: Nav Component -- < Playlist / Song Name */ }
                     <DropdownToggle 
-                        user="kshats" 
-                        onClick={ handleToggleClick }
-                        isOpen={ isVisible } 
+                        user={currentUser.username}
+                        onClick={handleToggleClick}
+                        isOpen={isVisible} 
                     />
                 </div>
             </div>
-            <DropdownMenu isVisible={ isVisible } ref={ menuElement } />
+            <DropdownMenu isVisible={isVisible} ref={menuElement} />
         </nav>
     )
 }
