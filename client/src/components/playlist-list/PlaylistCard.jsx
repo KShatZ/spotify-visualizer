@@ -1,7 +1,7 @@
 export default function PlaylistCard({ spotifyID, playlistName, playlistImage, trackCount, isPublic }) {
 
     return (
-        <a className="playlist-card" href={`/api/playlist/${spotifyID}`}>
+        <a className="playlist-card" href={`/playlist/${spotifyID}`}>
             <div className="playlist-card-album-art grey-border-3">
                 <img src={playlistImage}></img>
             </div>
