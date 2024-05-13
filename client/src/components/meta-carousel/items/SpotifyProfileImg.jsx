@@ -1,6 +1,6 @@
 import { useContext } from "react";
 
-import { CurrentUser } from "../../field_names";
+import { CurrentUser } from "../../../field_names";
 
 
 export default function SpotifyProfileImg({ onTouchStart, onTouchMove, onTouchEnd }) {

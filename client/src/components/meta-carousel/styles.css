@@ -60,16 +60,6 @@
     transition: color ease .3s;
 }
 
-#meta-title {
-    font-size: 30px;
-}
-
-#playlist-duration {
-    font-size: 12px;
-    margin-top: 3px;
-    opacity: .5;
-}
-
 
 /* ------------------------ */
 /* ------ Responsive ------ */
@@ -91,16 +81,6 @@
         width: 250px;
         height: 250px;
     }
-
-    #meta-title {
-        font-size: 32px;
-    }
-    #playlist-duration {
-        font-size: 14px;
-    }
-    #playlist-duration {
-        font-size: 14px;
-    }
 }
 
 @media screen and (min-width: 1280px) {
@@ -108,14 +88,6 @@
     .carousel-item-container {
         width: 275px;
         height: 275px;
-    }
-
-    #meta-title {
-        font-size: 34px;
-    }
-
-    #playlist-duration {
-        font-size: 16px;
     }
 }
 
