@@ -14,6 +14,11 @@ export default function PlaylistList({ playlists }) {
                         playlist.image = spotifyLogo;
                     }
 
+                    if (playlist.id == "61AyymWJMD8iTyTJdHxEQI") {
+                        console.log("Playlist name:", playlist.name);
+                        console.log("Track count:", playlist.track_count);
+                    }
+
                     return (
                         <PlaylistCard 
                             key={playlist.id}
