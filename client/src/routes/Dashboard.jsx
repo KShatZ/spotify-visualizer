@@ -3,8 +3,10 @@ import { useLoaderData } from "react-router-dom";
 
 import Navbar from "../components/nav/Navbar";
 import MetaCarousel from "../components/meta-carousel/MetaCarousel";
+import SpotifyProfileImg from "../components/meta-carousel/items/SpotifyProfileImg";
+import SpotifyProfileMeta from "../components/meta-carousel/items/SpotifyProfileMeta";
 import PlaylistHeader from "../components/playlist-header/PlaylistHeader";
-import PlaylistList from "../components/playlist-list/PlaylistList";
+import Playlists from "../components/playlists/Playlists";
 import { CurrentUser } from "../field_names";
 
 
@@ -12,14 +14,22 @@ export default function Dashboard() {
 
     const currentUser = useContext(CurrentUser);
     const userPlaylists = useLoaderData();
+    
     const spotifyDisplayName = currentUser.spotify_profile.display_name;
+    const carouselItems = [
+        <SpotifyProfileImg key="spotify-profile-image" />,
+        <SpotifyProfileMeta key="spotify-profile-meta" />,
+    ]
 
     return (
         <>
             <Navbar />
-            <MetaCarousel titleContent={spotifyDisplayName} />
+            <MetaCarousel items={carouselItems} />
+            <div style={{textAlign: "center"}} className="container">
+                <h1 id="meta-title">{spotifyDisplayName}</h1>
+            </div>
             <PlaylistHeader />
-            <PlaylistList playlists={userPlaylists} />
+            <Playlists playlists={userPlaylists} />
         </>
     )
 

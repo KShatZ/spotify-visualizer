@@ -113,6 +113,24 @@ legend {
     font-size: 25px;
 }
 
+/* ----------------------------- */
+/* ------ Dashboard Route ------ */
+/* ----------------------------- */
+#meta-title {
+    font-size: 30px;
+}
+
+
+/* ---------------------------- */
+/* ------ Playlist Route ------ */
+/* ---------------------------- */
+#playlist-duration {
+    font-size: 12px;
+    margin-top: 3px;
+    opacity: .5;
+}
+
+
 /* ------------------------ */
 /* ------ Responsive ------ */
 /* ------------------------ */
@@ -128,6 +146,14 @@ legend {
 
     .header-title-container h2 {
         font-size: 27px;
+    }
+
+    #meta-title {
+        font-size: 32px;
+    }
+
+    #playlist-duration {
+        font-size: 14px;
     }
 }
 
@@ -150,6 +176,14 @@ legend {
 
     .header-title-container h2 {
         font-size: 28px;
+    }
+
+    #meta-title {
+        font-size: 30px;
+    }
+
+    #playlist-duration {
+        font-size: 16px;
     }
 }
 
