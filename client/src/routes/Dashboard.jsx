@@ -5,7 +5,7 @@ import Navbar from "../components/nav/Navbar";
 import MetaCarousel from "../components/meta-carousel/MetaCarousel";
 import SpotifyProfileImg from "../components/meta-carousel/items/SpotifyProfileImg";
 import SpotifyProfileMeta from "../components/meta-carousel/items/SpotifyProfileMeta";
-import PlaylistHeader from "../components/playlist-header/PlaylistHeader";
+import PlaylistHeader from "../components/headers/playlist-header/PlaylistHeader";
 import Playlists from "../components/playlists/Playlists";
 import { CurrentUser } from "../field_names";
 

@@ -9,7 +9,7 @@
 
 }
 
-#playlist-sort-icon {
+#sort-icon {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -31,6 +31,21 @@
 }
 
 
+/* --------------------------- */
+/* ------ Tracks Header ------ */
+/* --------------------------- */
+#tracks-audio-features {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 13px;
+    opacity: .8;
+    width: 65px;
+    margin-top: 11px;
+}
+
+
+
 /* ------------------------ */
 /* ------ Responsive ------ */
 /* ------------------------ */
@@ -40,7 +55,7 @@
         font-size: 14px;
     }
     
-    #playlist-sort-icon {
+    #sort-icon {
         height: 14px;
         width: 14px;
     }
@@ -48,6 +63,11 @@
     #sort-toggle-container svg {
         height: 19px;
         width: 19px;
+    }
+
+    #tracks-audio-features {
+        font-size: 15px;
+        width: 70px;
     }
 }
 
@@ -57,7 +77,7 @@
         font-size: 15px;
     }
     
-    #playlist-sort-icon {
+    #sort-icon {
         height: 15px;
         width: 15px;
     }
@@ -65,5 +85,9 @@
     #sort-toggle-container svg {
         height: 20px;
         width: 20px;
+    }
+
+    #tracks-audio-features {
+        font-size: 15px;
     }
 }

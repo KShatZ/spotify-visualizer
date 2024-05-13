@@ -1,7 +1,7 @@
-import SortView from "./SortView";
-import SortToggleSVG from "./SortToggleSVG";
+import SortView from "../SortView";
+import SortToggleSVG from "../SortToggleSVG";
 
-import "./styles.css";
+import "../styles.css";
 
 export default function PlaylistHeader() {
 

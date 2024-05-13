@@ -47,7 +47,7 @@ export default function SortView({ type, column }) {
 
     return (
         <div id="sort-view-container">  
-            <div id="playlist-sort-icon">
+            <div id="sort-icon">
                 { svg[type]["icon"] }
             </div>
 
