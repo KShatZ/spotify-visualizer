@@ -3,16 +3,13 @@ import { redirect } from "react-router-dom";
 /**
  * After a user grants or declines access to their Spotify data, 
  * Spotify will redirect them to the clients /auth/spotify/tokens 
- * which is essentially just this loader that takes the code 
+ * route which is essentially just this loader that takes the spotify code 
  * or lack thereof and forwards the auth flow along to the server.
  */
 
 export default async function spotifyAuthLoader({ request }) {
 
     const url = new URL(request.url);
-
-    console.log("Request:", request.referrer);
-
     const searchParams = url.searchParams;
 
     // Spotify did not send code needed to acquire access token
