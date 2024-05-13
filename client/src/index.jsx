@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import { authLoader, logoutUser } from "./routes/loaders/auth";
 import spotifyAuthLoader from "./routes/loaders/spotifyAuth";
+import dashboardLoader from "./routes/loaders/dashboard";
 
 import "./styles.css";
 import Protected from "./routes/Protected";
@@ -19,7 +20,8 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Dashboard />
+        element: <Dashboard />,
+        loader: dashboardLoader
       },
     ],
     loader: authLoader
