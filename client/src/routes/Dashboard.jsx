@@ -14,10 +14,12 @@ export default function Dashboard() {
 
     const currentUser = useContext(CurrentUser);
     const userPlaylists = useLoaderData();
-    
+
     const spotifyDisplayName = currentUser.spotify_profile.display_name;
+    const spotifyProfileImg = currentUser.spotify_profile.profile_image;
+
     const carouselItems = [
-        <SpotifyProfileImg key="spotify-profile-image" />,
+        <SpotifyProfileImg key="spotify-profile-image" img={spotifyProfileImg}/>,
         <SpotifyProfileMeta key="spotify-profile-meta" />,
     ]
 

@@ -20,14 +20,14 @@
     width: 225px;
 }
 
-#spot-img-container {
+#meta-img-container {
     background-color: #000000;  /* For default image - Spotify Logo */
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-#spot-img-container img {
+#meta-img-container img {
     max-width: 100%;
     max-height: 100%;
 }
