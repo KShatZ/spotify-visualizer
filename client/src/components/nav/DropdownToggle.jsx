@@ -10,7 +10,7 @@ export default function DropdownToggle({ user, onClick, isOpen }) {
 
     return (
         <div id="nav-dropdown-toggle" className="bg-color"  onClick={ handleClick }>
-            <span>{ user }</span>
+            <span id="username">{ user }</span>
             <DropdownSVG isOpen={ isOpen } /> 
         </div>
     )
