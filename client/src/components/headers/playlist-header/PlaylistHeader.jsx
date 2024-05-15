@@ -1,5 +1,5 @@
 import SortView from "../SortView";
-import SortToggleSVG from "../SortToggleSVG";
+import FilterToggleSVG from "../FilterToggleSVG";
 
 import "../styles.css";
 
@@ -13,8 +13,8 @@ export default function PlaylistHeader() {
                 <SortView type={ "default" } column={undefined}/>
             </div>
             <hr/>
-            {/* Todo: Sort Component */}
-            <SortToggleSVG />
+            {/* Todo: Filter Component */}
+            <FilterToggleSVG />
 
         </div>
     )

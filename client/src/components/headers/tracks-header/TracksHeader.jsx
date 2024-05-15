@@ -1,4 +1,4 @@
-import SortToggleSVG from "../SortToggleSVG";
+import FilterToggleSVG from "../FilterToggleSVG";
 
 import "../styles.css";
 
@@ -15,8 +15,8 @@ export default function TracksHeader() {
                 </div>
             </div>
             <hr/>
-            {/* Todo: Sort Component */}
-            <SortToggleSVG />
+            {/* Todo: Filter Component */}
+            <FilterToggleSVG />
 
         </div>
     )

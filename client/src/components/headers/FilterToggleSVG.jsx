@@ -1,7 +1,7 @@
-export default function  SortToggleSVG() {
+export default function  FilterToggleSVG() {
 
     return (
-        <div id="sort-toggle-container">
+        <div id="filter-toggle-container">
             <svg width="18px" height="18px" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg" fill="#faf9f6d9">
                 <g id="SVGRepo_bgCarrier" strokeWidth="0"/>
                 <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"/>
