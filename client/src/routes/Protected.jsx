@@ -1,4 +1,4 @@
-import { Outlet, Navigate, useLoaderData } from "react-router-dom";
+import { Outlet, Navigate, useLoaderData, ScrollRestoration } from "react-router-dom";
 
 import { CurrentUser } from "../field_names";
 
@@ -13,6 +13,7 @@ export default function Protected() {
 
     return (
         <CurrentUser.Provider value={currentUser}>
+            <ScrollRestoration />
             <Outlet />
         </CurrentUser.Provider>
     );
