@@ -36,6 +36,10 @@ nav {
     z-index: 50;
 }
 
+h1, h2, h3, h4, h5, h6, p, span {
+    cursor: default;
+}
+
 a {
     text-decoration: none;
     color: rgba(250, 249, 246, .85);
@@ -130,6 +134,13 @@ legend {
     opacity: .5;
 }
 
+#playlist-track-count {
+    font-size: 12px;
+    margin-top: 15px;
+    opacity: .5;
+    text-align: center;
+}
+
 
 /* ------------------------ */
 /* ------ Responsive ------ */
@@ -154,6 +165,10 @@ legend {
 
     #playlist-duration {
         font-size: 14px;
+    }
+
+    #playlist-track-count {
+        font-size: 13px;
     }
 }
 
@@ -184,6 +199,11 @@ legend {
 
     #playlist-duration {
         font-size: 16px;
+    }
+
+    #playlist-track-count {
+        font-size: 14px;
+        margin-top: 13px;
     }
 }
 
