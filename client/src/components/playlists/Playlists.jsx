@@ -4,9 +4,9 @@ import spotifyLogo from "../../assets/spotify_assets/icon/Spotify_Icon_RGB_Green
 import "./styles.css";
 
 
-export default function PlaylistList({ playlists }) {
+export default function Playlists({ playlists }) {
     return (
-        <div id="playlist-list-container" className="container">
+        <div id="playlists-container" className="container">
             {
                 playlists.map((playlist) => {
                     
