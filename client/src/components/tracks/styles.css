@@ -49,14 +49,12 @@
 }
 
 .track-name {
-    cursor: pointer;
     font-size: 17px;
     font-weight: 500;
     line-height: 25px;
 }
 
 .track-artists {
-    cursor: pointer;
     font-size: 11px;
     font-weight: 200px;
     opacity: .5;
@@ -73,7 +71,6 @@
 }
 
 .track-audio-features p {
-    cursor: pointer;
     width: 28px;
     text-align: center;
 }

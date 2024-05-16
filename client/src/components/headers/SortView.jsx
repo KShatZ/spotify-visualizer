@@ -46,12 +46,12 @@ export default function SortView({ type, column }) {
     };
 
     return (
-        <div id="sort-view-container">  
-            <div id="sort-icon">
+        <div id="sort-view-container" className="pointer">  
+            <div id="sort-icon" >
                 { svg[type]["icon"] }
             </div>
 
-            <span>{svg[type]["span"]}</span>
+            <span className="pointer">{svg[type]["span"]}</span>
         </div>
     )
 

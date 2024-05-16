@@ -36,7 +36,7 @@ nav {
     z-index: 50;
 }
 
-h1, h2, h3, h4, h5, h6, p, span {
+h1, h2, h3, h4, h5, h6, p, span, li {
     cursor: default;
 }
 
@@ -253,4 +253,8 @@ legend {
 
 .error-msg {
     color: rgba(195, 43, 43, 1)
+}
+
+.pointer {
+    cursor: pointer !important;
 }

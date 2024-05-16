@@ -9,8 +9,8 @@ export default function PlaylistCard({ spotifyID, playlistName, playlistImage, t
             </div>
 
             <div className="playlist-card-meta">
-                <h3 className="playlist-name">{playlistName}</h3>
-                <p className="playlist-track-count">Tracks: {trackCount}</p>
+                <h3 className="playlist-name pointer">{playlistName}</h3>
+                <p className="playlist-track-count pointer">Tracks: {trackCount}</p>
             </div>
 
             <div className="playlist-card-arrow">

@@ -11,13 +11,13 @@ export default function TrackCard({ spotifyID, albumCover, name, artists }) {
             </div>
 
             <div className="track-meta">
-                <h3 className="track-name">{name}</h3>
-                <p className="track-artists">{artists}</p>
+                <h3 className="track-name pointer">{name}</h3>
+                <p className="track-artists pointer">{artists}</p>
             </div>
 
             <div className="track-audio-features">
-                <p>145</p>
-                <p>12B</p>
+                <p className="pointer">145</p>
+                <p className="pointer">12B</p>
             </div>
         </Link>
     )

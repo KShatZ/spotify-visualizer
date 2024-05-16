@@ -10,8 +10,8 @@ export default function TracksHeader() {
             <div className="header-title-container">
                 <h2>Tracks:</h2>
                 <div id="tracks-audio-features">
-                    <p>BPM</p>
-                    <p>KEY</p>
+                    <p className="pointer">BPM</p>
+                    <p className="pointer">KEY</p>
                 </div>
             </div>
             <hr/>
