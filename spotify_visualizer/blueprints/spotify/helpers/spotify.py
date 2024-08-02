@@ -25,7 +25,7 @@ def get_spotify_user_info(access_token):
 
     try:
         # Make a request to the user endpoint
-        r = requests.get(endpoint, headers=headers)
+        r = requests.get(endpoint, headers=headers, timeout=60)
 
         if r.status_code == 401:
             print("Access Token Expired")
