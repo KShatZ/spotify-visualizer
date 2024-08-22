@@ -21,6 +21,8 @@ interactive graphs about a users listening history, playlist meta data, track da
 
 ## Demo the MVP
 
+The version of the MVP that is live is the Jinja SSR version. I have decided to migrate this application to React **See react-migration** branch.
+
 <div align="center">
     <p>Use these credentials</p>
     <strong>Username</strong>: bgilfoyle | <strong>Password</strong>: D1i2N!eS_H
