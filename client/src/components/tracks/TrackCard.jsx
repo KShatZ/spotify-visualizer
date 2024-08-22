@@ -2,12 +2,12 @@ import { Link } from "react-router-dom";
 
 import "./styles.css"
 
-export default function TrackCard({ spotifyID, albumCover, name, artists }) {
+export default function TrackCard({ spotifyID, coverArt, name, artists, bpm, camelotKey }) {
 
     return (
         <Link to="#" id="track" >
             <div className="track-album-cover grey-border-3">
-                <img src={albumCover}></img>
+                <img src={coverArt}></img>
             </div>
 
             <div className="track-meta">
@@ -16,8 +16,8 @@ export default function TrackCard({ spotifyID, albumCover, name, artists }) {
             </div>
 
             <div className="track-audio-features">
-                <p className="pointer">145</p>
-                <p className="pointer">12B</p>
+                <p className="pointer">{bpm}</p>
+                <p className="pointer">{camelotKey}</p>
             </div>
         </Link>
     )

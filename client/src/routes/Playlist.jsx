@@ -12,8 +12,10 @@ export default function Playlist() {
 
     const playlist = useLoaderData();
 
+    console.log(playlist)
+
     const carouselItems = [
-        <SpotifyPlaylistImg key="spotify-playlist-img" img={spotifyLogo} />,
+        <SpotifyPlaylistImg key="spotify-playlist-img" img={playlist.meta.cover_art} />,
     ];
 
     return (
@@ -21,14 +23,14 @@ export default function Playlist() {
             <Navbar />
             <MetaCarousel items={carouselItems} />
             <div style={{textAlign: "center"}} className="container">
-                <h1 id="meta-title">Liked Songs</h1>
-                <p id="playlist-duration">5 hours 33 minutes 27 seconds</p>
+                <h1 id="meta-title">{playlist.meta.name}</h1>
+                <p id="playlist-duration">{playlist.duration}</p> 
             </div>
             <TracksHeader />
             <div className="container">
-                <p id="playlist-track-count">Total: 1382</p>
+                <p id="playlist-track-count">Total: {playlist.meta.total_tracks}</p>
             </div>
-            <Tracks />
+            <Tracks tracks={playlist.tracks}/>
         </>
     )
 

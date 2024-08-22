@@ -9,13 +9,19 @@ export default function Tracks({ tracks }) {
 
         <div id="tracks-container" className="container">
             {
-                tracksData.map((track) => {
+                tracks.map((track) => {
                     return (
                         <TrackCard 
-                            key={track._id} 
-                            albumCover={track.track.album.images[0].url}
-                            name={track.track.name}
-                            artists={track.track.artists[0].name}
+                            key={track.id} 
+                            coverArt={track.cover_art}
+                            name={track.name}
+                            artists={track.artists}
+                            camelotKey={track.key}
+                            bpm={Math.floor(track.bpm)}
+                            duration={track.duration}
+                            explicit={track.explicit}
+                            spotify_url={track.spotify_url}
+                            added_at={track.added_at}
                         />
                     )
                 })

@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 
-export default function PlaylistCard({ spotifyID, playlistName, playlistImage, trackCount, isPublic }) {
+export default function PlaylistCard({ spotifyID, playlistName, playlistImage, trackCount, isPublic, snapID }) {
+
+    const href = `/playlist/${spotifyID}?snap_id=` + encodeURIComponent(snapID);
 
     return (
-        <Link to={`/playlist/${spotifyID}`} className="playlist-card" >
+        <Link to={href} className="playlist-card" >
             <div className="playlist-card-album-art grey-border-3">
                 <img src={playlistImage}></img>
             </div>

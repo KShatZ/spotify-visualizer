@@ -5,12 +5,14 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { authLoader, logoutUser } from "./routes/loaders/auth";
 import spotifyAuthLoader from "./routes/loaders/spotifyAuth";
 import dashboardLoader from "./routes/loaders/dashboard";
+import playlistLoader from "./routes/loaders/playlistLoader";
 
 import "./styles.css";
 import Protected from "./routes/Protected";
 import Login from "./routes/Login";
 import Register from "./routes/Register";
 import Dashboard from "./routes/Dashboard";
+import Playlist from "./routes/Playlist";
 
 
 const router = createBrowserRouter([
@@ -23,6 +25,11 @@ const router = createBrowserRouter([
         element: <Dashboard />,
         loader: dashboardLoader
       },
+      {
+        path: "/playlist/:playlistID",
+        element: <Playlist />,
+        loader: ({ params, request }) => playlistLoader(params, request)
+      }
     ],
     loader: authLoader
   },

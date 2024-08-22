@@ -22,6 +22,7 @@ export default function Playlists({ playlists }) {
                             playlistImage={playlist.image}
                             trackCount={playlist.track_count}
                             isPublic={playlist.public}
+                            snapID={playlist.snapshot_id}
                         />
                     )
                 })

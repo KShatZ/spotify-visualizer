@@ -177,6 +177,10 @@ legend {
     .container {
         width: 90%;
     }
+
+    #playlist-track-count {
+        margin-top: 16px;
+    }
 }
 
 @media screen and (min-width: 1280px) {
@@ -203,7 +207,7 @@ legend {
 
     #playlist-track-count {
         font-size: 14px;
-        margin-top: 13px;
+        margin-top: 17px;
     }
 }
 
