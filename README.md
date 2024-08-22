@@ -9,13 +9,13 @@
 
 
 ## Project Description
-Spotify Visualizer (temporary name as apple music integration is planne as well) is in it's very early stages of development, therefore the current state is very far from the current vision of the "final" product. However, the main idea is to develop a web application who's goal is to facilitate enhanced playlist creation and generate insightful analytics on a user's music taste. The application is meant to have multiple user personas: DJ's, fitness trainers, and curious listeners.
+'Spotify Visualizer' (temporary name as Apple Music integration is planned) is in its very early stages of development, therefore the current state is very far from the current vision of the "final" product. However, the main idea is to develop a web application whose goal is to facilitate enhanced playlist creation and generate insightful analytics on a user's music taste. The application is meant to have multiple user personas: DJ's, fitness trainers, and curious listeners.
 
-At the current moment, I am developing features that are mainly intended for the DJ's and fitness trainers that may need to create
+At the current moment, I am developing features that are mainly intended for DJs and fitness trainers who may need to create
 playlists with specific tracks based on tempo, key, etc... the [production version](#demo-the-mvp) allows users to see the BPM and Key (camelot notation) of each track in any of their playlists. The next features to be released will allow users to view and filter playlists and their tracks on various meta data, add/delete songs from playlists, as well as create new playlists. 
 
-Once enhanced playlist creation is finished, the idea is to utilize plotly dash in order to be able to generate very interesting 
-interactive graphs about a users listening history, playlist meta data, track data, etc...
+Once enhanced playlist creation is finished, the idea is to utilize Plotly Dash to be able to generate very interesting 
+interactive graphs about a user's listening history, playlist metadata, track data, etc...
 <br>
 <br>
 
@@ -36,14 +36,14 @@ The version of the MVP that is live is the Jinja SSR version. I have decided to 
 
 <br>
 
-If you would like to be able to check out the app with your spotify account you may reach out to me at kirillshats@gmail.com. Due to the very early stages of development there is currently a whitelist restriction implemented by Spotify. It limits the number of users that can authenticate their Spotify accounts with my app.
+If you would like to be able to check out the app with your Spotify account you may reach out to me at kirillshats@gmail.com. Due to the very early stages of development, there is currently a whitelist restriction implemented by Spotify. It limits the number of users that can authenticate their Spotify accounts with my app.
 <br>
 <br>
 
 ## Tech Used
 
 ### Front End:
-The front-end is entirely built from flask rendered jinja templates that contain vanilla **HTML, CSS, and Javscript**. There are plans to port this all over to REACT.js once I get around to learning the framework.
+The current front end is entirely built from flask rendered Jinja templates that contain vanilla **HTML, CSS, and Javscript**. However, there is a full React.js migration under the works right now, so this will no longer hold true soon.
 <br>
 
 ### Back End:
@@ -51,11 +51,11 @@ The backend is all built with Pythons' **Flask** web framework, which has **Plot
 <br>
 
 ### Database:
-At the current moment, in order to allow for faster development and pivotting **MongoDB** is being used. There might be plans to utilize mongo more as a cache and transitition data over to a SQL based database in the future, once schemas and functionality is ironed out.
+At the current moment, to allow for faster development and pivotting **MongoDB** is being used. There might be plans to utilize Mongo more as a cache and migrate data over to a SQL-based database in the future, once data schemas and server functionality are more ironed out.
 <br>
 
 ### Production Infrastructure:
-In production, the application is containerized and run by a **Gunicorn** server which sits behind an **Nginx** proxy server. At the moment, the mongo database that is being used is hosted with Mongo Atlas.
+In production, the application is containerized and run by a **Gunicorn** server which sits behind an **Nginx** proxy server. At the moment, the Mongo database that is being used is hosted with Mongo Atlas.
 <br>
 <br>
 
@@ -83,13 +83,13 @@ export SPOTIFY_REDIRECT_URI="URL To Redirect After Spotify oAUTH"
 
 <br>
 
-Regardless, on whether you choose to run the app [Bare Metal](#bare-metal:) or with [Docker](#docker:) you will need to set the values of some environment variables in the *environment.sh* script file found in the docker directory.
+Regardless, of whether you choose to run the app [Bare Metal](#bare-metal:) or with [Docker](#docker:) you will need to set the values of some environment variables in the *environment.sh* script file found in the docker directory.
 
 <br>
 
 **$FLASK_SECRET_KEY**
 
->This is a flask configuration option which is required to succesfully sign cookies for session management. You can set this to whatever you like for development purposes but in production flask says "it should be a long random bytes or str".
+>This is a flask configuration option that is required to successfully sign cookies for session management. You can set this to whatever you like for development purposes but in production, flask says "it should be a long random bytes or str".
 
 **$FLASK_APP_MODE**
 
@@ -97,15 +97,15 @@ Regardless, on whether you choose to run the app [Bare Metal](#bare-metal:) or w
 
 **$SPOTIFY_CLIENT_ID**
 
->This deals with the spotify api authentication process. In order to be able to utilize the spotify api, you need to register and create an app. Upon creation of the app you will receive the `Client ID` which needs to be the value here. Check out the <a href="https://developer.spotify.com/documentation/web-api/tutorials/code-flow">Spotify Api Docs</a> for more detailed information.
+>This deals with the Spotify API authentication process. To be able to utilize the Spotify API, you need to register and create an app. Upon creation of the app you will receive the `Client ID` which needs to be the value here. Check out the <a href="https://developer.spotify.com/documentation/web-api/tutorials/code-flow">Spotify Api Docs</a> for more detailed information.
 
 **$SPOTIFY_CLIENT_SECRET**
 
-> This deals with the spotify api authentication process. In order to be able to utilize the spotify api, you need to register and create an app. Upon creation of the app you will receive the `Client Secret` which needs to be the value here. Check out the <a href="https://developer.spotify.com/documentation/web-api/tutorials/code-flow#:~:text=Value-,Authorization,-Required">Spotify Api Docs</a> for more detailed information.
+> This deals with the Spotify API authentication process. To be able to utilize the Spotify API, you need to register and create an app. Upon creation of the app you will receive the `Client Secret` which needs to be the value here. Check out the <a href="https://developer.spotify.com/documentation/web-api/tutorials/code-flow#:~:text=Value-,Authorization,-Required">Spotify Api Docs</a> for more detailed information.
 
 **$SPOTIFY_REDIRECT_URI**
 
->The value of this variable is used in spotify authentication, for when the user first allows *Spotify Visualizer* to have access to their Spotify account through oAuth. Once the user accepts, they are then redirected to the url that is the value of this environment variable. The value should be a url to your application, wherever it is that you want to redirect the user too. You must also let the application know to expect this url, within the app's settings in the spotify developer console.Check out the <a href="https://developer.spotify.com/documentation/web-api/tutorials/code-flow#:~:text=to%20code.-,redirect_uri,-Required">Spotify Api Docs</a> for more deatailed information.
+>The value of this variable is used in Spotify authentication, for when the user first allows *Spotify Visualizer* to have access to their Spotify account through oAuth. Once the user accepts, they are then redirected to the url that is the value of this environment variable. The value should be a url to your application, wherever it is that you want to redirect the user to. You must also let the application know to expect this url, within the app's settings in the Spotify developer console. Check out the <a href="https://developer.spotify.com/documentation/web-api/tutorials/code-flow#:~:text=to%20code.-,redirect_uri,-Required">Spotify Api Docs</a> for more detailed information.
 
 **$MONGO_URI**
 
