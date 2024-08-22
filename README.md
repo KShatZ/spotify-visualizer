@@ -21,6 +21,8 @@ interactive graphs about a users listening history, playlist meta data, track da
 
 ## Demo the MVP
 
+This MVP is the SSR Jinja template version (old), the react-migration version is not live at the moment.
+
 <div align="center">
     <p>Use these credentials</p>
     <strong>Username</strong>: bgilfoyle | <strong>Password</strong>: D1i2N!eS_H
