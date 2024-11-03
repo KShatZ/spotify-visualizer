@@ -52,7 +52,7 @@ def validate_auth_code():
         "client_secret": os.getenv("SPOTIFY_CLIENT_SECRET"), 
     }
 
-    r = requests.post(endpoint, headers=access_token_headers, params=access_token_params)
+    r = requests.post(endpoint, headers=access_token_headers, params=access_token_params, timeout=60)
 
     spotify_auth = populate_user_spotify_object(current_user.username, r.json())
 
