@@ -1,9 +1,9 @@
 from pymongo import MongoClient
-import requests
 # from dotenv import load_dotenv
 # load_dotenv()
 
 from spotify_visualizer.field_names import Mongo
+from security import safe_requests
 
 mongo = MongoClient(host=Mongo.MONGO_URI)
 USERS_COLLECTION = mongo["spotify-visualizer"]["users"]
@@ -25,7 +25,7 @@ def get_spotify_user_info(access_token):
 
     try:
         # Make a request to the user endpoint
-        r = requests.get(endpoint, headers=headers)
+        r = safe_requests.get(endpoint, headers=headers)
 
         if r.status_code == 401:
             print("Access Token Expired")
